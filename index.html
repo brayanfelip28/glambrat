@@ -102,7 +102,7 @@
       border:none;border-radius:50px;padding:16px 44px;
       color:#fff;font-family:'Fredoka One',cursive;font-size:1.25rem;
       cursor:pointer;box-shadow:0 6px 28px rgba(232,57,158,.55);
-      transition:transform .2s,box-shadow .2s;
+      transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-block;
     }
     .btn-primary:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 12px 40px rgba(232,57,158,.75)}
     .btn-ghost{
@@ -110,7 +110,7 @@
       border-radius:50px;padding:14px 40px;
       color:#fff;font-family:'Fredoka One',cursive;font-size:1.25rem;
       cursor:pointer;backdrop-filter:blur(8px);
-      transition:background .2s,transform .2s;
+      transition:background .2s,transform .2s; text-decoration:none; display:inline-block;
     }
     .btn-ghost:hover{background:rgba(255,255,255,.28);transform:translateY(-4px)}
     .hstar{position:absolute;pointer-events:none;animation:starFloat 5s ease-in-out infinite;font-size:2rem}
@@ -177,14 +177,31 @@
     .product-footer{display:flex;align-items:center;justify-content:space-between}
     .price{font-family:'Fredoka One',cursive;font-size:1.55rem;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .price span{font-size:.9rem;font-family:'Nunito',sans-serif;font-weight:700;-webkit-text-fill-color:rgba(255,255,255,.7)}
-    .add-btn{
-      background:linear-gradient(135deg,var(--hot-pink),var(--blue));
+
+    /* WHATSAPP BUTTON */
+    .wa-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:linear-gradient(135deg,#25D366,#128C7E);
       border:none;border-radius:50px;padding:10px 20px;
       color:#fff;font-family:'Fredoka One',cursive;font-size:.95rem;
-      cursor:pointer;box-shadow:0 4px 16px rgba(255,45,158,.45);
+      cursor:pointer;box-shadow:0 4px 16px rgba(37,211,102,.45);
       transition:transform .2s,box-shadow .2s;
+      text-decoration:none;
     }
-    .add-btn:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(255,45,158,.65)}
+    .wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(37,211,102,.65)}
+
+    /* WHATSAPP FLOAT */
+    .wa-float{
+      position:fixed;bottom:28px;right:28px;z-index:500;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      border-radius:50%;width:62px;height:62px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.8rem;
+      box-shadow:0 6px 28px rgba(37,211,102,.6);
+      animation:waPulse 2s ease-in-out infinite;
+      text-decoration:none;
+    }
+    @keyframes waPulse{0%,100%{box-shadow:0 6px 28px rgba(37,211,102,.6)}50%{box-shadow:0 6px 40px rgba(37,211,102,.9),0 0 0 10px rgba(37,211,102,.15)}}
 
     /* WHY US */
     .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:960px;margin:0 auto}
@@ -217,16 +234,16 @@
     }
     .newsletter-box h2{font-family:'Fredoka One',cursive;font-size:2.4rem;margin-bottom:10px}
     .newsletter-box p{opacity:.88;margin-bottom:30px;font-size:1rem;line-height:1.6}
-    .input-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .input-row input{
-      flex:1;min-width:220px;padding:14px 24px;
-      border-radius:50px;border:2px solid rgba(255,255,255,.4);
-      background:rgba(255,255,255,.18);color:#fff;
-      font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;
-      outline:none;backdrop-filter:blur(6px);transition:border .2s;
+    .wa-contact-btn{
+      display:inline-flex;align-items:center;gap:12px;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      border:none;border-radius:50px;padding:18px 44px;
+      color:#fff;font-family:'Fredoka One',cursive;font-size:1.3rem;
+      cursor:pointer;box-shadow:0 6px 28px rgba(37,211,102,.5);
+      transition:transform .2s,box-shadow .2s;
+      text-decoration:none;
     }
-    .input-row input::placeholder{color:rgba(255,255,255,.65)}
-    .input-row input:focus{border-color:var(--gold)}
+    .wa-contact-btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 10px 36px rgba(37,211,102,.7)}
 
     /* FOOTER */
     footer{position:relative;z-index:1;text-align:center;padding:52px 48px 36px;border-top:1.5px solid rgba(255,255,255,.18)}
@@ -240,14 +257,14 @@
       width:46px;height:46px;border-radius:50%;
       background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);
       display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;
-      transition:background .2s,transform .2s;
+      transition:background .2s,transform .2s; text-decoration:none;
     }
     .soc:hover{background:rgba(255,255,255,.3);transform:scale(1.18)}
     .footer-copy{font-size:.8rem;opacity:.5}
 
     /* TOAST */
     .toast{
-      position:fixed;bottom:30px;right:30px;z-index:999;
+      position:fixed;bottom:100px;right:30px;z-index:999;
       background:linear-gradient(135deg,var(--hot-pink),var(--blue));
       border-radius:18px;padding:16px 28px;
       font-family:'Fredoka One',cursive;font-size:1.1rem;
@@ -281,11 +298,15 @@
   <div class="orb orb3"></div>
 </div>
 
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/573189653717" target="_blank" title="Escríbenos por WhatsApp">💬</a>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">GlamBrat Co. 👁️</div>
   <ul class="nav-links">
     <li><a href="#productos">Lentes</a></li>
+    <li><a href="#accesorios">Accesorios</a></li>
     <li><a href="#nosotros">Nosotras</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -309,7 +330,7 @@
   <p class="hero-sub">Transforma tu mirada con los lentes más <em>chic</em> y vibrantes. ¡Sé la Brat que siempre quisiste ser! 💅</p>
   <div class="hero-btns">
     <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">💜 Ver Colección</button>
-    <button class="btn-ghost" onclick="document.getElementById('nosotros').scrollIntoView({behavior:'smooth'})">Saber más →</button>
+    <a class="btn-ghost" href="https://wa.me/573189653717" target="_blank">💬 Escríbenos</a>
   </div>
 </section>
 
@@ -365,26 +386,75 @@
     </div>
     <div class="testi-card reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Los de Pattaya Blue son mis favoritos, me hacen ver como una Bratz real. ¡El precio es increíble para la calidad que tienen!"</p>
-      <div class="testi-author">— Daniela R. 💙</div>
+      <p class="testi-text">"Los de Estonia Green son mis favoritos, me hacen ver como una Bratz real. ¡El precio es increíble para la calidad que tienen!"</p>
+      <div class="testi-author">— Daniela R. 💚</div>
     </div>
     <div class="testi-card reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Pedí los Honey y los Sugar Pop Brown, los dos son divinos. Muy cómodos para llevar todo el día. ¡GlamBrat es lo mejor!"</p>
+      <p class="testi-text">"Pedí los Honey y los Choco Gray, los dos son divinos. Muy cómodos para llevar todo el día. ¡GlamBrat es lo mejor!"</p>
       <div class="testi-author">— Mariana T. ✨</div>
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
+<!-- ACCESORIOS -->
+<section id="accesorios">
+  <h2 class="sec-title reveal">💆 Accesorios</h2>
+  <p class="sec-sub reveal">Todo lo que necesitas para cuidar tus lentes 🧴✨</p>
+  <div class="products-grid" style="max-width:700px;margin:0 auto">
+
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="soluter.jpg" alt="Solución Multi Soluter" loading="lazy"/>
+        <span class="lens-badge">🧴 Esencial</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Solución Multi Soluter</div>
+        <p class="product-desc">Solución multipropósito 120ml para conservar, limpiar, lubricar y desinfectar tus lentes de contacto. Marca Oopharm certificada.</p>
+        <div class="product-specs">
+          <span class="spec-pill">💧 120ml</span>
+          <span class="spec-pill">🧼 Multipropósito</span>
+          <span class="spec-pill">✅ Certificada</span>
+        </div>
+        <div class="product-footer">
+          <div class="price">$16.000 <span>COP</span></div>
+          <a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Me%20interesa%20la%20*Solución%20Multi%20Soluter%20120ml*%20a%20%2416.000%20COP%20💧✨" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="kit_viaje.jpg" alt="Kit Viaje Lentes de Contacto" loading="lazy"/>
+        <span class="lens-badge">✈️ Kit Viaje</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Kit Viaje para Lentes</div>
+        <p class="product-desc">Kit completo de viaje que incluye cajita porta lentes, chupita de silicona para insertar y pinzas para remover. ¡Todo lo que necesitas en un solo kit!</p>
+        <div class="product-specs">
+          <span class="spec-pill">📦 Cajita</span>
+          <span class="spec-pill">🔵 Chupita</span>
+          <span class="spec-pill">🥢 Pinzas</span>
+        </div>
+        <div class="product-footer">
+          <div class="price">$5.000 <span>COP</span></div>
+          <a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Me%20interesa%20el%20*Kit%20de%20Viaje%20para%20Lentes*%20a%20%245.000%20COP%20✈️✨" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
 <section id="contacto">
   <div class="newsletter-box reveal">
-    <h2>📩 ¡Únete al GlamClub!</h2>
-    <p>Suscríbete y recibe descuentos exclusivos, novedades y contenido glamoroso directo a tu WhatsApp 💅</p>
-    <div class="input-row">
-      <input type="text" placeholder="Tu número de WhatsApp 📱" id="waInput"/>
-      <button class="btn-primary" style="font-size:1rem;padding:14px 28px;" onclick="subscribeWA()">¡Quiero descuentos! 💜</button>
-    </div>
+    <h2>💬 ¡Haz tu pedido!</h2>
+    <p>Escríbenos directamente por WhatsApp para hacer tu pedido, resolver dudas o recibir asesoría personalizada 💅✨</p>
+    <a class="wa-contact-btn" href="https://wa.me/573189653717" target="_blank">
+      💬 Escribir por WhatsApp
+    </a>
+    <p style="margin-top:20px;font-size:.85rem;opacity:.7;">📱 +57 318 965 3717</p>
   </div>
 </section>
 
@@ -399,10 +469,10 @@
     <a href="#contacto">Contacto</a>
   </div>
   <div class="footer-social">
-    <div class="soc" title="Instagram">📸</div>
-    <div class="soc" title="TikTok">🎵</div>
-    <div class="soc" title="WhatsApp">💬</div>
-    <div class="soc" title="Facebook">💙</div>
+    <a class="soc" href="https://wa.me/573189653717" target="_blank" title="WhatsApp">💬</a>
+    <a class="soc" href="#" title="Instagram">📸</a>
+    <a class="soc" href="#" title="TikTok">🎵</a>
+    <a class="soc" href="#" title="Facebook">💙</a>
   </div>
   <p class="footer-copy">© 2025 GlamBrat Co. — Todos los derechos reservados 💅 Hecho con mucho ✨ en Colombia 🇨🇴</p>
 </footer>
@@ -410,17 +480,23 @@
 <div class="toast" id="toast"></div>
 
 <script>
+const WA = "https://wa.me/573189653717";
+
 const products = [
-  { name:"Mirage Gray",   desc:"Gris misterioso y profundo que amplía tu mirada. Perfecto para un look sofisticado y magnético.",        color:"Gris Mirage",   dia:"14.2mm", use:"Anual",    badge:"🌫️ Top Pick",  img:"/mnt/user-data/uploads/66644.jpg" },
-  { name:"Pattaya Blue",  desc:"Azul intenso y vibrante inspirado en el mar. DIA 14.2mm con 40% de agua para máximo confort.",           color:"Azul Pattaya",  dia:"14.2mm", water:"40%", use:"Anual", badge:"💙 Best Seller",img:"/mnt/user-data/uploads/66596.jpg" },
-  { name:"Barbie Marrón", desc:"Dorado cálido con tonos marrones que dan un look dramático y lujoso. Ideal para ojos oscuros.",            color:"Marrón Dorado", dia:"14.2mm", use:"Anual",    badge:"✨ Nuevo",      img:"/mnt/user-data/uploads/66352.jpg" },
-  { name:"Honey",         desc:"Tono miel suave y natural. Con 40% de agua para sentirlos todo el día sin molestias.",                   color:"Miel Natural",  dia:"14.2mm", bc:"8.5mm", water:"40%", use:"Anual", badge:"🍯 Natural", img:"/mnt/user-data/uploads/66353.jpg" },
-  { name:"OMG Brown",     desc:"Marrón profundo con detalles dorados. DIA 14.0mm con efecto de ojos grandes impresionante.",             color:"Marrón OMG",    dia:"14.0mm", water:"38%", use:"Anual", badge:"🤎 Caliente",  img:"/mnt/user-data/uploads/65661.jpg" },
-  { name:"Sugar Pop Brown",desc:"Marrón suave y romántico. Perfectos para un look casual y natural con toque de dulzura.",              color:"Marrón Sugar",  dia:"14.2mm", use:"Anual",    badge:"🍭 Cute",       img:"/mnt/user-data/uploads/65662.jpg" },
-  { name:"DY Light Blue", desc:"Azul cielo suave y etéreo. Un look soñador y delicado que te hace brillar sin esfuerzo.",                color:"Azul Cielo",    dia:"14.2mm", use:"Anual",    badge:"🩵 Dreamy",     img:"/mnt/user-data/uploads/65552.jpg" },
-  { name:"Gomitas Gray",  desc:"Gris suave de aspecto natural con efecto de ojos grandes. DIA 14.2mm ultra cómodo.",                    color:"Gris Gomitas",  dia:"14.2mm", use:"Anual",    badge:"🩶 Trendy",     img:"/mnt/user-data/uploads/63882.jpg" },
-  { name:"Pattaya Green", desc:"Verde bosque con detalles dorados. Un look natural pero llamativo que enamora a primera vista.",          color:"Verde Pattaya", dia:"14.2mm", water:"38%", use:"Anual", badge:"💚 Exótico",   img:"/mnt/user-data/uploads/62342.jpg" },
-  { name:"OMG Gray",      desc:"Gris estrellado y luminoso. Hasta 6 meses de uso. DIA 14.0mm y B.C 8.5mm de confort máximo.",           color:"Gris OMG",      dia:"14.0mm", bc:"8.5mm", water:"38%", use:"6 meses", badge:"⭐ Premium",  img:"/mnt/user-data/uploads/54717.jpg" }
+  { name:"Café Noche Estrellada", desc:"Café cálido con destellos únicos. Un look sofisticado y natural que enamora a primera vista.", color:"Café", dia:"14.2mm", use:"Anual", badge:"☕ Nuevo", img:"67688.jpg" },
+  { name:"Estonia Green",         desc:"Verde vibrante con detalles dorados. DIA 14.5mm con 38% de agua. Un look exótico y llamativo.", color:"Verde Estonia", dia:"14.5mm", water:"38%", use:"Anual", badge:"💚 Exótico", img:"67655.jpg" },
+  { name:"Nicosia Blue",          desc:"Azul cielo con reflejos plateados. DIA 14.2mm con 38% de agua. Perfectos para un look etéreo.", color:"Azul Nicosia", dia:"14.2mm", water:"38%", use:"Anual", badge:"🩵 Dreamy", img:"67654.jpg" },
+  { name:"Sweet Secret Blue",     desc:"Azul grisáceo con detalles dorados únicos. Un look misterioso y elegante que sorprende.", color:"Azul Secreto", dia:"14.2mm", use:"Anual", badge:"💙 Misterioso", img:"67650.jpg" },
+  { name:"Russia Blue",           desc:"Azul turquesa intenso y vibrante. Perfecto para un look dramático y lleno de personalidad.", color:"Azul Rusia", dia:"14.2mm", use:"Anual", badge:"🌊 Intenso", img:"67651.jpg" },
+  { name:"Margaret Gray",         desc:"Gris profundo y elegante con efecto de pupila grande. Look natural pero impactante.", color:"Gris Margaret", dia:"14.2mm", use:"Anual", badge:"🩶 Elegante", img:"67652.jpg" },
+  { name:"Marrón Agua",           desc:"Marrón cálido con efecto agua cristalina. Muy natural y cómodo para uso diario.", color:"Marrón", dia:"14.2mm", use:"Anual", badge:"🤎 Natural", img:"67653.jpg" },
+  { name:"Choco Gray",            desc:"Gris chocolate suave y natural. DIA 14.2mm, B.C 8.5mm y 40% agua. Comodidad premium.", color:"Gris Choco", dia:"14.2mm", bc:"8.5mm", water:"40%", use:"Anual", badge:"🍫 Premium", img:"67423.png" },
+  { name:"Mirage Gray",           desc:"Gris misterioso y profundo que amplía tu mirada. Perfecto para un look sofisticado.", color:"Gris Mirage", dia:"14.2mm", use:"Anual", badge:"🌫️ Top Pick", img:"66644.jpg" },
+  { name:"Pattaya Blue",          desc:"Azul intenso inspirado en el mar. DIA 14.2mm con 40% de agua para máximo confort.", color:"Azul Pattaya", dia:"14.2mm", water:"40%", use:"Anual", badge:"💙 Best Seller", img:"66596.jpg" },
+  { name:"Honey",                 desc:"Tono miel suave y natural. Con 40% de agua para sentirlos todo el día sin molestias.", color:"Miel", dia:"14.2mm", bc:"8.5mm", water:"40%", use:"Anual", badge:"🍯 Natural", img:"66353.jpg" },
+  { name:"Sugar Pop Brown",       desc:"Marrón suave y romántico. Perfectos para un look casual y natural con toque de dulzura.", color:"Marrón Sugar", dia:"14.2mm", use:"Anual", badge:"🍭 Cute", img:"65662.jpg" },
+  { name:"DY Light Blue",         desc:"Azul cielo suave y etéreo. Un look soñador y delicado que te hace brillar sin esfuerzo.", color:"Azul Cielo", dia:"14.2mm", use:"Anual", badge:"🩵 Dreamy", img:"65552.jpg" },
+  { name:"Pattaya Green",         desc:"Verde bosque con detalles dorados. Un look natural pero llamativo que enamora a primera vista.", color:"Verde Pattaya", dia:"14.2mm", water:"38%", use:"Anual", badge:"💚 Exótico", img:"62342.jpg" }
 ];
 
 const grid = document.getElementById('productsGrid');
@@ -431,8 +507,9 @@ products.forEach((p,i) => {
   if(p.water) specs.push(`💧 ${p.water}`);
   if(p.use)   specs.push(`🗓️ ${p.use}`);
   const specsHTML = specs.map(s=>`<span class="spec-pill">${s}</span>`).join('');
+  const waMsg = encodeURIComponent(`Hola! Me interesa el lente *${p.name}* de $35.000 COP 👁️✨`);
   grid.innerHTML += `
-    <div class="product-card reveal" style="transition-delay:${i*0.06}s">
+    <div class="product-card reveal" style="transition-delay:${i*0.05}s">
       <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" loading="lazy"/>
         <span class="lens-badge">${p.badge}</span>
@@ -443,14 +520,14 @@ products.forEach((p,i) => {
         <div class="product-specs">${specsHTML}</div>
         <div class="product-footer">
           <div class="price">$35.000 <span>COP</span></div>
-          <button class="add-btn" onclick="addToCart('${p.name}')">Pedir 💜</button>
+          <a class="wa-btn" href="${WA}?text=${waMsg}" target="_blank">💬 Pedir</a>
         </div>
       </div>
     </div>`;
 });
 
 // Marquee
-const items = ["✦ GLAMBRAT CO.","👁️ LENTES PREMIUM","💜 COLOMBIA","✨ ENVÍO RÁPIDO","💅 LOOK BRATZ","🌟 $35.000 COP","💙 COLORES VIBRANTES","🩷 BRATZ VIBES"];
+const items = ["✦ GLAMBRAT CO.","👁️ LENTES PREMIUM","💜 COLOMBIA","✨ ENVÍO RÁPIDO","💅 LOOK BRATZ","🌟 $35.000 COP","💙 COLORES VIBRANTES","🩷 BRATZ VIBES","💬 PIDE POR WHATSAPP"];
 const track = document.getElementById('marqueeTrack');
 let html = '';
 for(let i=0;i<4;i++) items.forEach(t => html += `<span class="marquee-item">${t}</span>`);
@@ -461,20 +538,6 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Toast
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3200);
-}
-function addToCart(name) { showToast(`✨ ¡${name} seleccionado! Próximamente tienda completa 💜`); }
-function subscribeWA() {
-  const val = document.getElementById('waInput').value.trim();
-  if(val) { showToast('💜 ¡Bienvenida al GlamClub! Te contactaremos pronto 🎉'); document.getElementById('waInput').value=''; }
-  else showToast('⚠️ Ingresa tu número de WhatsApp 📱');
-}
 
 // Sparkle cursor
 document.addEventListener('mousemove', function(e) {
@@ -492,3 +555,4 @@ document.head.appendChild(st);
 </script>
 </body>
 </html>
+
