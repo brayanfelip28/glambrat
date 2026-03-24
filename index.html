@@ -374,30 +374,6 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <h2 class="sec-title reveal">💬 Lo que dicen las Brats</h2>
-  <p class="sec-sub reveal">Reseñas reales de nuestras clientas 🌟</p>
-  <div class="testi-grid">
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Me llegaron súper rápido y son hermosos, el color Mirage Gray se ve exactamente como en la foto. ¡Definitivamente vuelvo a pedir!"</p>
-      <div class="testi-author">— Valentina M. 💜</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Los de Estonia Green son mis favoritos, me hacen ver como una Bratz real. ¡El precio es increíble para la calidad que tienen!"</p>
-      <div class="testi-author">— Daniela R. 💚</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Pedí los Honey y los Choco Gray, los dos son divinos. Muy cómodos para llevar todo el día. ¡GlamBrat es lo mejor!"</p>
-      <div class="testi-author">— Mariana T. ✨</div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCESORIOS -->
 <section id="accesorios">
   <h2 class="sec-title reveal">💆 Accesorios</h2>
   <p class="sec-sub reveal">Todo lo que necesitas para cuidar tus lentes 🧴✨</p>
@@ -410,9 +386,9 @@
       </div>
       <div class="product-info">
         <div class="product-name">Solución Multi Soluter</div>
-        <p class="product-desc">Solución multipropósito 50ml para conservar, limpiar, lubricar y desinfectar tus lentes de contacto. Marca Oopharm certificada.</p>
+        <p class="product-desc">Solución multipropósito 120ml para conservar, limpiar, lubricar y desinfectar tus lentes de contacto. Marca Oopharm certificada.</p>
         <div class="product-specs">
-          <span class="spec-pill">💧 50ml</span>
+          <span class="spec-pill">💧 120ml</span>
           <span class="spec-pill">🧼 Multipropósito</span>
           <span class="spec-pill">✅ Certificada</span>
         </div>
@@ -446,7 +422,29 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
 <!-- CONTACTO -->
+<section id="reviews">
+  <h2 class="sec-title reveal">💬 Lo que dicen las Brats</h2>
+  <p class="sec-sub reveal">Reseñas reales de nuestras clientas 🌟</p>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Me llegaron súper rápido y son hermosos, el color Mirage Gray se ve exactamente como en la foto. ¡Definitivamente vuelvo a pedir!"</p>
+      <div class="testi-author">— Valentina M. 💜</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Los de Estonia Green son mis favoritos, me hacen ver como una Bratz real. ¡El precio es increíble para la calidad que tienen!"</p>
+      <div class="testi-author">— Daniela R. 💚</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Pedí los Honey y los Choco Gray, los dos son divinos. Muy cómodos para llevar todo el día. ¡GlamBrat es lo mejor!"</p>
+      <div class="testi-author">— Mariana T. ✨</div>
+    </div>
+  </div>
+</section>
 <section id="contacto">
   <div class="newsletter-box reveal">
     <h2>💬 ¡Haz tu pedido!</h2>
@@ -483,18 +481,15 @@
 const WA = "https://wa.me/573189653717";
 
 const products = [
-  { name:"Café Noche Estrellada", desc:"Café cálido con destellos únicos. Un look sofisticado y natural que enamora a primera vista.", color:"Café", dia:"14.2mm", use:"Anual", badge:"☕ Nuevo", img:"67688.jpg" },
-  
   { name:"Sweet Secret Blue",     desc:"Azul grisáceo con detalles dorados únicos. Un look misterioso y elegante que sorprende.", color:"Azul Secreto", dia:"14.2mm", use:"Anual", badge:"💙 Misterioso", img:"67650.jpg" },
   { name:"Russia Blue",           desc:"Azul turquesa intenso y vibrante. Perfecto para un look dramático y lleno de personalidad.", color:"Azul Rusia", dia:"14.2mm", use:"Anual", badge:"🌊 Intenso", img:"67651.jpg" },
   { name:"Margaret Gray",         desc:"Gris profundo y elegante con efecto de pupila grande. Look natural pero impactante.", color:"Gris Margaret", dia:"14.2mm", use:"Anual", badge:"🩶 Elegante", img:"67652.jpg" },
- 
- 
   { name:"Mirage Gray",           desc:"Gris misterioso y profundo que amplía tu mirada. Perfecto para un look sofisticado.", color:"Gris Mirage", dia:"14.2mm", use:"Anual", badge:"🌫️ Top Pick", img:"66644.jpg" },
   { name:"Pattaya Blue",          desc:"Azul intenso inspirado en el mar. DIA 14.2mm con 40% de agua para máximo confort.", color:"Azul Pattaya", dia:"14.2mm", water:"40%", use:"Anual", badge:"💙 Best Seller", img:"66596.jpg" },
   { name:"Honey",                 desc:"Tono miel suave y natural. Con 40% de agua para sentirlos todo el día sin molestias.", color:"Miel", dia:"14.2mm", bc:"8.5mm", water:"40%", use:"Anual", badge:"🍯 Natural", img:"66353.jpg" },
   { name:"Sugar Pop Brown",       desc:"Marrón suave y romántico. Perfectos para un look casual y natural con toque de dulzura.", color:"Marrón Sugar", dia:"14.2mm", use:"Anual", badge:"🍭 Cute", img:"65662.jpg" },
-  { name:"DY Light Blue",         desc:"Azul cielo suave y etéreo. Un look soñador y delicado que te hace brillar sin esfuerzo.", color:"Azul Cielo", dia:"14.2mm", use:"Anual", badge:"🩵 Dreamy", img:"65552.jpg" },
+  { name:"DY Light Blue",         desc:"Azul cielo suave y etéreo. Un look soñador y delicado que te hace brillar sin esfuerzo.", color:"Azul Cielo", dia:"14.2mm", use:"Anual", badge:"🩵 Dreamy", img:"65552.jpg" }
+];
 
 const grid = document.getElementById('productsGrid');
 products.forEach((p,i) => {
