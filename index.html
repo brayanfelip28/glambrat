@@ -3,507 +3,607 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>GlamBrat Co. 👁️✨</title>
+<title>GlamBrat Co. Lentes de Contacto</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-:root{--pink:#e8399e;--hot-pink:#ff2d9e;--purple:#8a2be2;--purple-mid:#b044e8;--blue:#3d74e8;--blue-light:#5ba3ff;--gold:#f5c842;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+:root {
+  --pink:#d4688f;
+  --hot-pink:#c95b8a;
+  --purple:#7c4da0;
+  --purple-mid:#9b6bbf;
+  --blue:#5b7ec9;
+  --blue-light:#7fa3e0;
+  --gold:#c9a84c;
+  --white:#ffffff;
+  --bg1:#2a1a35;
+  --bg2:#1e1428;
+  --card-bg:rgba(255,255,255,.08);
+  --card-border:rgba(255,255,255,.15);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(145deg,#2a1a35 0%,#1e1428 50%,#16101f 100%);
+  min-height:100vh; color:#ede8f5; overflow-x:hidden;
+}
+body::after{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
 
-body{font-family:'Nunito',sans-serif;background:linear-gradient(145deg,#f05db8 0%,#c833e0 40%,#8a2be2 100%);min-height:100vh;color:#fff;overflow-x:hidden;}
+/* ── SPLASH ── */
+#splash{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#1a0d24 0%,#110a1c 60%,#0d0815 100%);
+  overflow:hidden;
+  transition:opacity .9s ease, transform .9s ease;
+}
+#splash.hide{opacity:0;transform:scale(1.04);pointer-events:none;}
 
-/* SPLASH SCREEN - Solo marca al entrar */
-.splash-screen{position:fixed;inset:0;z-index:9999;background:linear-gradient(145deg,#f05db8 0%,#c833e0 40%,#8a2be2 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease, visibility 0.8s ease;}
-.splash-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-.splash-logo{font-family:'Fredoka One',cursive;font-size:clamp(3rem,10vw,6rem);background:linear-gradient(135deg,#fff 20%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;animation:pulseLogo 2s ease-in-out infinite;}
-.splash-tagline{font-size:1.2rem;margin-top:20px;opacity:0.9;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
-.splash-enter{margin-top:40px;background:linear-gradient(135deg,var(--hot-pink),var(--blue));border:none;border-radius:50px;padding:15px 40px;color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;box-shadow:0 6px 28px rgba(255,45,158,.55);transition:transform .2s,box-shadow .2s;animation:bounce 2s infinite;}
-.splash-enter:hover{transform:scale(1.05);}
-@keyframes pulseLogo{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.splash-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:splashOrb 5s ease-in-out infinite;}
+.sorb1{width:380px;height:380px;background:#7c4da0;opacity:.18;top:-80px;left:-80px;animation-delay:0s;}
+.sorb2{width:300px;height:300px;background:#5b7ec9;opacity:.15;bottom:-60px;right:-60px;animation-delay:2s;}
+.sorb3{width:180px;height:180px;background:#c9a84c;opacity:.12;top:45%;left:58%;animation-delay:3.5s;}
+@keyframes splashOrb{0%,100%{transform:scale(1)}50%{transform:scale(1.12) translate(-15px,15px)}}
 
+.splash-stars{position:absolute;inset:0;pointer-events:none;}
+.sstar{position:absolute;color:rgba(255,255,255,.4);font-size:.9rem;opacity:0;animation:sstarAnim 3.5s ease-in-out infinite;}
+@keyframes sstarAnim{0%{opacity:0;transform:scale(0) rotate(0deg)}50%{opacity:.6;transform:scale(1) rotate(180deg)}100%{opacity:0;transform:scale(0) rotate(360deg)}}
+
+.splash-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 3s ease-in-out infinite;}
+.splash-ring:nth-child(1){width:280px;height:280px;animation-delay:0s}
+.splash-ring:nth-child(2){width:420px;height:420px;animation-delay:.5s;border-color:rgba(196,104,143,.07)}
+.splash-ring:nth-child(3){width:560px;height:560px;animation-delay:1s;border-color:rgba(91,126,201,.05)}
+@keyframes ringPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.4}50%{transform:translate(-50%,-50%) scale(1.04);opacity:.9}}
+
+.splash-logo-wrap{position:relative;z-index:2;text-align:center;}
+.splash-logo{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(4.5rem,16vw,11rem);
+  line-height:.9;
+  background:linear-gradient(135deg,#f0e8ff 0%,#c9a84c 50%,#d4688f 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 40px rgba(196,104,143,.3));
+  opacity:0;transform:scale(.65) translateY(30px);
+  animation:splashLogoIn 1s .4s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes splashLogoIn{to{opacity:1;transform:scale(1) translateY(0);}}
+.splash-tagline{
+  font-family:'Nunito',sans-serif;font-weight:800;
+  font-size:clamp(.75rem,2vw,1rem);letter-spacing:4px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-top:12px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .8s 1.1s ease forwards;
+}
+
+.splash-dots{margin-top:44px;position:relative;z-index:2;display:flex;gap:10px;justify-content:center;opacity:0;animation:fadeUp .8s 1.4s ease forwards;}
+.splash-dot{width:9px;height:9px;border-radius:50%;animation:dotBounce 1.3s ease-in-out infinite;}
+.splash-dot:nth-child(1){animation-delay:0s;background:#d4688f;}
+.splash-dot:nth-child(2){animation-delay:.22s;background:#c9a84c;}
+.splash-dot:nth-child(3){animation-delay:.44s;background:#7fa3e0;}
+@keyframes dotBounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-11px);opacity:1}}
+
+/* ── BG ORBS ── */
 .bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.22;animation:orbFloat 12s ease-in-out infinite}
-.orb1{width:500px;height:500px;background:#ff2d9e;top:-120px;left:-120px;}
-.orb2{width:400px;height:400px;background:#3d74e8;bottom:5%;right:-80px;animation-delay:4s}
-.orb3{width:280px;height:280px;background:#f5c842;top:38%;left:28%;animation-delay:8s}
-@keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;animation:orbFloat 14s ease-in-out infinite}
+.orb1{width:500px;height:500px;background:#7c4da0;top:-120px;left:-120px;animation-delay:0s}
+.orb2{width:400px;height:400px;background:#5b7ec9;bottom:5%;right:-80px;animation-delay:5s}
+.orb3{width:260px;height:260px;background:#c9a84c;top:40%;left:30%;animation-delay:9s}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-35px) scale(1.06)}}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border-bottom:1.5px solid rgba(255,255,255,.2);}
-.nav-logo{font-family:'Fredoka One',cursive;font-size:1.8rem;background:linear-gradient(135deg,#fff 20%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-cta{background:linear-gradient(135deg,var(--hot-pink),var(--blue));border:none;border-radius:50px;padding:10px 20px;color:#fff;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;box-shadow:0 4px 20px rgba(255,45,158,.5);text-decoration:none;white-space:nowrap;transition:transform .2s;}
-.nav-cta:hover{transform:scale(1.08)}
-.hamburger{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);border-radius:12px;padding:8px 12px;cursor:pointer;display:flex;flex-direction:column;gap:5px;z-index:201;}
-.hamburger span{display:block;width:22px;height:2.5px;background:#fff;border-radius:4px;transition:all .3s ease;}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 48px;
+  background:rgba(20,12,30,.7);backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.nav-logo{
+  font-family:'Fredoka One',cursive;font-size:1.8rem;
+  background:linear-gradient(135deg,#f0e8ff 20%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,.65);text-decoration:none;
+  font-weight:800;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--hot-pink),var(--purple));
+  border:none;border-radius:50px;padding:10px 26px;
+  color:#fff;font-family:'Fredoka One',cursive;font-size:.95rem;
+  cursor:pointer;box-shadow:0 4px 20px rgba(196,104,143,.25);
+  transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(196,104,143,.4)}
 
-/* MENÚ DESPLEGABLE MEJORADO */
-.dropdown{position:fixed;top:0;right:0;width:320px;height:100vh;background:rgba(25,0,55,.98);backdrop-filter:blur(20px);border-left:2px solid rgba(255,255,255,.3);padding-top:80px;transform:translateX(100%);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);z-index:199;overflow-y:auto;}
-.dropdown.open{transform:translateX(0);opacity:1;}
-.dropdown-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:198;opacity:0;pointer-events:none;transition:opacity .3s;}
-.dropdown-overlay.open{opacity:1;pointer-events:all;}
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 20px 80px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+  border-radius:50px;padding:7px 22px;
+  font-size:.8rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+  margin-bottom:28px;animation:fadeUp .7s ease both;
+}
+.hero-title{
+  font-family:'Fredoka One',cursive;font-size:clamp(4rem,12vw,9rem);
+  line-height:.92;margin-bottom:12px;animation:fadeUp .8s .1s ease both;
+}
+.t-glam{
+  display:block;
+  background:linear-gradient(135deg,#f0e8ff 0%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.t-brat{
+  display:block;
+  background:linear-gradient(135deg,var(--blue-light) 0%,#c084fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{
+  font-size:clamp(.95rem,2vw,1.15rem);font-weight:700;
+  max-width:480px;margin:20px auto 40px;opacity:.7;line-height:1.7;
+  animation:fadeUp .9s .2s ease both;color:#d4c8e8;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp 1s .3s ease both}
+.btn-primary{
+  background:linear-gradient(135deg,var(--hot-pink) 0%,var(--purple) 100%);
+  border:none;border-radius:50px;padding:15px 42px;
+  color:#fff;font-family:'Fredoka One',cursive;font-size:1.15rem;
+  cursor:pointer;box-shadow:0 5px 24px rgba(196,104,143,.3);
+  transition:transform .2s,box-shadow .2s; text-decoration:none; display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(196,104,143,.45)}
+.btn-ghost{
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.2);
+  border-radius:50px;padding:14px 38px;
+  color:rgba(255,255,255,.85);font-family:'Fredoka One',cursive;font-size:1.15rem;
+  cursor:pointer;backdrop-filter:blur(8px);
+  transition:background .2s,transform .2s; text-decoration:none; display:inline-block;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
 
-.dropdown-section{border-bottom:1px solid rgba(255,255,255,.1)}
-.dropdown-section:last-child{border-bottom:none}
-.dropdown-trigger{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer;font-family:'Fredoka One',cursive;font-size:1.1rem;transition:background .2s;color:#fff;}
-.dropdown-trigger:hover{background:rgba(255,255,255,.1);color:var(--gold);}
-.arrow{transition:transform .3s;font-size:.8rem;}
-.dropdown-trigger.active .arrow{transform:rotate(180deg)}
-.dropdown-sub{max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(0,0,0,.2);}
-.dropdown-sub.open{max-height:500px}
-.dropdown-sub a{display:flex;align-items:center;gap:12px;padding:14px 32px;color:rgba(255,255,255,.85);text-decoration:none;font-size:.95rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05);transition:all .2s;}
-.dropdown-sub a:hover{background:rgba(255,255,255,.1);color:var(--gold);padding-left:40px;}
-.dropdown-link{display:flex;align-items:center;gap:12px;padding:18px 24px;color:#fff;text-decoration:none;font-family:'Fredoka One',cursive;font-size:1.1rem;transition:all .2s;}
-.dropdown-link:hover{background:rgba(255,255,255,.1);color:var(--gold);padding-left:32px;}
+.hstar{position:absolute;pointer-events:none;animation:starFloat 6s ease-in-out infinite;font-size:1.4rem;opacity:.35}
+.hstar:nth-child(1){top:22%;left:6%;animation-delay:0s}
+.hstar:nth-child(2){top:18%;right:8%;animation-delay:1s;font-size:1rem}
+.hstar:nth-child(3){top:65%;left:9%;animation-delay:2s;font-size:1.2rem}
+.hstar:nth-child(4){top:70%;right:6%;animation-delay:.5s;font-size:1.5rem}
+.hstar:nth-child(5){top:38%;right:4%;animation-delay:1.8s;font-size:.9rem}
+@keyframes starFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(15deg)}}
 
-/* SECCIÓN LENTES DESTACADA */
-.hero-lentes{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.05) 100%);}
-.hero-lentes-title{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,8vw,5rem);margin-bottom:20px;background:linear-gradient(135deg,#fff 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-lentes-sub{font-size:1.2rem;max-width:600px;margin:0 auto 30px;opacity:.9;line-height:1.6;font-weight:700;}
-.lentes-cta{background:linear-gradient(135deg,var(--hot-pink) 0%,var(--purple) 100%);border:none;border-radius:50px;padding:18px 50px;color:#fff;font-family:'Fredoka One',cursive;font-size:1.3rem;cursor:pointer;box-shadow:0 8px 32px rgba(232,57,158,.6);transition:transform .2s,box-shadow .2s;text-decoration:none;display:inline-block;margin-top:20px;}
-.lentes-cta:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 40px rgba(232,57,158,.8);}
-
-/* SECCIÓN ENVÍOS DESTACADA */
-.envios-section{position:relative;z-index:1;padding:100px 40px;background:linear-gradient(135deg,rgba(37,211,102,.15),rgba(18,140,126,.15));border-top:3px solid rgba(37,211,102,.5);border-bottom:3px solid rgba(37,211,102,.5);}
-.envios-container{max-width:900px;margin:0 auto;text-align:center;}
-.envios-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,5vw,3.5rem);margin-bottom:20px;color:#25D366;text-shadow:0 0 30px rgba(37,211,102,.5);}
-.envios-sub{font-size:1.3rem;margin-bottom:40px;opacity:.95;font-weight:700;}
-.envios-badge{display:inline-flex;align-items:center;gap:15px;background:linear-gradient(135deg,rgba(37,211,102,.3),rgba(18,140,126,.3));border:2px solid #25D366;border-radius:50px;padding:20px 40px;font-size:1.4rem;font-family:'Fredoka One',cursive;margin-bottom:30px;box-shadow:0 8px 32px rgba(37,211,102,.4);}
-.ciudades-destacadas{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:30px;}
-.ciudad-destacada{background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.1));border:2px solid rgba(255,255,255,.4);border-radius:20px;padding:20px 35px;font-family:'Fredoka One',cursive;font-size:1.3rem;display:flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .3s;}
-.ciudad-destacada:hover{transform:translateY(-5px) scale(1.05);background:rgba(255,255,255,.25);}
-
-.marquee-section{position:relative;z-index:1;overflow:hidden;background:linear-gradient(90deg,var(--hot-pink),var(--blue),var(--purple-mid),var(--hot-pink));background-size:400% 100%;animation:shiftGrad 8s linear infinite;padding:14px 0;border-top:2px solid rgba(255,255,255,.25);border-bottom:2px solid rgba(255,255,255,.25);}
-@keyframes shiftGrad{0%{background-position:0%}100%{background-position:400%}}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
-.marquee-item{font-family:'Fredoka One',cursive;font-size:1rem;letter-spacing:2px;padding:0 32px}
+/* ── MARQUEE ── */
+.marquee-section{
+  position:relative;z-index:1;overflow:hidden;
+  background:rgba(255,255,255,.05);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:13px 0;
+}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite}
+.marquee-item{font-family:'Fredoka One',cursive;font-size:1rem;letter-spacing:2px;padding:0 32px;color:rgba(255,255,255,.5)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-section{position:relative;z-index:1;padding:80px 40px}
-.sec-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,5vw,3.2rem);text-align:center;margin-bottom:10px;background:linear-gradient(135deg,#fff 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.sec-sub{text-align:center;font-size:1rem;font-weight:700;opacity:.85;max-width:480px;margin:0 auto 44px;line-height:1.6}
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:90px 48px}
+.sec-title{
+  font-family:'Fredoka One',cursive;font-size:clamp(2rem,4.5vw,3.2rem);
+  text-align:center;margin-bottom:10px;
+  background:linear-gradient(135deg,#f0e8ff 0%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.sec-sub{text-align:center;font-size:1rem;font-weight:700;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto 52px;line-height:1.7}
 
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px;max-width:1200px;margin:0 auto}
-.product-card{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);border-radius:26px;overflow:hidden;backdrop-filter:blur(14px);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s;position:relative;}
-.product-card::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.15) 0%,transparent 55%);pointer-events:none;border-radius:inherit;}
-.product-card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 24px 60px rgba(0,0,0,.28),0 0 50px rgba(255,45,158,.2)}
-.product-img-wrap{position:relative;height:220px;overflow:hidden;background:rgba(0,0,0,.2)}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.product-card:hover .product-img-wrap img{transform:scale(1.1)}
-.lens-badge{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--hot-pink),var(--purple));border-radius:50px;padding:6px 14px;font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+/* ── PRODUCTS ── */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1180px;margin:0 auto}
+.product-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;overflow:hidden;backdrop-filter:blur(12px);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,border-color .35s;
+}
+.product-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 40px rgba(196,104,143,.12);
+  border-color:rgba(255,255,255,.22);
+}
+
+/* ── IMAGEN COMPLETA ── */
+.product-img-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;           /* cuadrado perfecto */
+  background:#160e22;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.product-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;          /* muestra la foto COMPLETA sin recortar */
+  padding:10px;
+  transition:transform .5s ease;
+}
+.product-card:hover .product-img-wrap img{transform:scale(1.06)}
+
+.lens-badge{
+  position:absolute;top:12px;right:12px;
+  background:rgba(124,77,160,.7);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:50px;padding:4px 12px;
+  font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#fff;
+}
 .product-info{padding:20px 20px 24px}
-.product-name{font-family:'Fredoka One',cursive;font-size:1.25rem;margin-bottom:8px;color:var(--gold)}
-.product-desc{font-size:.9rem;line-height:1.6;opacity:.9;margin-bottom:14px}
-.product-specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.spec-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 12px;font-size:.75rem;font-weight:700;}
+.product-name{font-family:'Fredoka One',cursive;font-size:1.25rem;margin-bottom:6px;color:#e8d8ff}
+.product-desc{font-size:.85rem;line-height:1.6;color:rgba(255,255,255,.55);margin-bottom:14px}
+.product-specs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.spec-pill{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:50px;padding:3px 11px;font-size:.73rem;font-weight:700;color:rgba(255,255,255,.7);
+}
 .product-footer{display:flex;align-items:center;justify-content:space-between}
-.price{font-family:'Fredoka One',cursive;font-size:1.5rem;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.price span{font-size:.9rem;font-family:'Nunito',sans-serif;font-weight:700;-webkit-text-fill-color:rgba(255,255,255,.7)}
-.wa-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:50px;padding:10px 20px;color:#fff;font-family:'Fredoka One',cursive;font-size:.95rem;cursor:pointer;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform .2s;text-decoration:none;}
-.wa-btn:hover{transform:scale(1.1)}
+.price{font-family:'Fredoka One',cursive;font-size:1.45rem;background:linear-gradient(135deg,var(--gold),#f0e8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.price span{font-size:.85rem;font-family:'Nunito',sans-serif;font-weight:700;-webkit-text-fill-color:rgba(255,255,255,.45)}
 
-/* SECCIÓN NOSOTROS - AHORA EN EL FONDO */
-.nosotros-fondo{position:relative;z-index:1;padding:100px 40px;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.15) 100%);border-top:2px solid rgba(255,255,255,.2);}
-.nosotros-fondo .about-inner{max-width:1000px;margin:0 auto;}
-.nosotros-fondo .about-text h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4vw,3rem);margin-bottom:20px;background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;}
-.nosotros-fondo .about-text>p{font-size:1.1rem;line-height:1.9;opacity:.95;margin-bottom:16px;text-align:center;max-width:800px;margin-left:auto;margin-right:auto;}
-.nosotros-fondo .about-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px;}
-.nosotros-fondo .about-card{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:20px;padding:25px 20px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:15px;transition:all .3s;}
-.nosotros-fondo .about-card:hover{transform:translateY(-8px) scale(1.02);background:rgba(255,255,255,.25);box-shadow:0 15px 40px rgba(0,0,0,.2);}
-.nosotros-fondo .about-card-icon{font-size:2.5rem;}
-.nosotros-fondo .about-card h3{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--gold);margin-bottom:8px;}
-.nosotros-fondo .about-card p{font-size:.95rem;opacity:.9;margin:0;line-height:1.5;}
+/* ── WA BTN ── */
+.wa-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  border:none;border-radius:50px;padding:9px 18px;
+  color:#fff;font-family:'Fredoka One',cursive;font-size:.9rem;
+  cursor:pointer;box-shadow:0 3px 14px rgba(37,211,102,.25);
+  transition:transform .2s,box-shadow .2s; text-decoration:none;
+}
+.wa-btn:hover{transform:scale(1.08);box-shadow:0 5px 20px rgba(37,211,102,.4)}
 
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1100px;margin:0 auto}
-.testi-card{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.22);border-radius:22px;padding:28px;backdrop-filter:blur(12px);transition:transform .3s;}
-.testi-card:hover{transform:translateY(-6px)}
-.testi-stars{color:var(--gold);font-size:1.1rem;margin-bottom:14px}
-.testi-text{font-size:.95rem;line-height:1.7;opacity:.9;margin-bottom:16px;font-style:italic}
-.testi-author{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--gold)}
+/* ── WA FLOAT ── */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:500;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  border-radius:50%;width:58px;height:58px;
+  display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+  box-shadow:0 5px 24px rgba(37,211,102,.35);
+  animation:waPulse 2.5s ease-in-out infinite; text-decoration:none;
+}
+@keyframes waPulse{0%,100%{box-shadow:0 5px 24px rgba(37,211,102,.35)}50%{box-shadow:0 5px 32px rgba(37,211,102,.6),0 0 0 9px rgba(37,211,102,.1)}}
 
-.newsletter-box{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);border-radius:32px;padding:52px 44px;max-width:620px;margin:0 auto;text-align:center;backdrop-filter:blur(16px);}
-.newsletter-box h2{font-family:'Fredoka One',cursive;font-size:2.1rem;margin-bottom:10px}
-.newsletter-box p{opacity:.88;margin-bottom:26px;font-size:.98rem;line-height:1.6}
-.wa-contact-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:50px;padding:15px 38px;color:#fff;font-family:'Fredoka One',cursive;font-size:1.15rem;cursor:pointer;box-shadow:0 6px 28px rgba(37,211,102,.5);transition:transform .2s;text-decoration:none;}
-.wa-contact-btn:hover{transform:translateY(-4px) scale(1.04)}
+/* ── WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;max-width:940px;margin:0 auto}
+.why-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;padding:32px 24px;text-align:center;
+  transition:transform .3s,background .3s;
+}
+.why-card:hover{transform:translateY(-7px);background:rgba(255,255,255,.09)}
+.why-icon{font-size:2.6rem;margin-bottom:14px;display:block}
+.why-card h3{font-family:'Fredoka One',cursive;font-size:1.25rem;color:#e8d8ff;margin-bottom:8px}
+.why-card p{font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.55)}
 
-footer{position:relative;z-index:1;text-align:center;padding:44px 40px 28px;border-top:1.5px solid rgba(255,255,255,.15)}
-.footer-logo{font-family:'Fredoka One',cursive;font-size:1.9rem;background:linear-gradient(135deg,#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;display:inline-block}
-.footer-tagline{opacity:.7;font-size:.88rem;margin-bottom:22px;font-weight:700}
-.footer-social{display:flex;gap:12px;justify-content:center;margin-bottom:22px}
-.soc{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:background .2s,transform .2s;text-decoration:none;}
-.soc:hover{background:rgba(255,255,255,.3);transform:scale(1.18)}
-.footer-copy{font-size:.78rem;opacity:.5}
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto}
+.testi-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;padding:28px;transition:transform .3s;
+}
+.testi-card:hover{transform:translateY(-5px)}
+.testi-stars{color:var(--gold);font-size:1rem;margin-bottom:12px}
+.testi-text{font-size:.93rem;line-height:1.7;color:rgba(255,255,255,.65);margin-bottom:16px;font-style:italic}
+.testi-author{font-family:'Fredoka One',cursive;font-size:.95rem;color:#c9a84c}
 
-.wa-float{position:fixed;bottom:26px;right:26px;z-index:500;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 28px rgba(37,211,102,.6);animation:waPulse 2s ease-in-out infinite;text-decoration:none;}
-@keyframes waPulse{0%,100%{box-shadow:0 6px 28px rgba(37,211,102,.6)}50%{box-shadow:0 6px 40px rgba(37,211,102,.9),0 0 0 10px rgba(37,211,102,.12)}}
+/* ── NEWSLETTER ── */
+.newsletter-box{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:32px;padding:60px 44px;max-width:620px;margin:0 auto;text-align:center;
+  backdrop-filter:blur(14px);
+}
+.newsletter-box h2{font-family:'Fredoka One',cursive;font-size:2.2rem;margin-bottom:10px;color:#f0e8ff}
+.newsletter-box p{color:rgba(255,255,255,.6);margin-bottom:28px;font-size:.97rem;line-height:1.7}
+.wa-contact-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  border:none;border-radius:50px;padding:16px 42px;
+  color:#fff;font-family:'Fredoka One',cursive;font-size:1.2rem;
+  cursor:pointer;box-shadow:0 5px 24px rgba(37,211,102,.3);
+  transition:transform .2s,box-shadow .2s; text-decoration:none;
+}
+.wa-contact-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(37,211,102,.45)}
 
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;text-align:center;padding:48px 48px 32px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-logo{font-family:'Fredoka One',cursive;font-size:2rem;background:linear-gradient(135deg,#f0e8ff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;display:inline-block}
+.footer-tagline{color:rgba(255,255,255,.4);font-size:.88rem;margin-bottom:26px;font-weight:700}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.footer-links a{color:rgba(255,255,255,.45);text-decoration:none;font-weight:800;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:12px;justify-content:center;margin-bottom:26px}
+.soc{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:background .2s,transform .2s;text-decoration:none;}
+.soc:hover{background:rgba(255,255,255,.15);transform:scale(1.15)}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.28)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ── RESPONSIVE ── */
 @media(max-width:768px){
-    nav{padding:12px 16px}
-    section{padding:60px 16px}
-    .hero-lentes{padding:100px 16px 60px}
-    .envios-section{padding:60px 16px}
-    .nosotros-fondo{padding:60px 16px;}
-    .nosotros-fondo .about-cards{grid-template-columns:1fr;}
-    .newsletter-box{padding:36px 18px}
-    footer{padding:36px 16px 22px}
-    .dropdown{width:280px;}
-    .ciudad-destacada{font-size:1.1rem;padding:15px 25px;}
+  nav{padding:12px 18px}
+  .nav-links{display:none}
+  section{padding:65px 18px}
+  .hero{padding:100px 18px 60px}
+  .newsletter-box{padding:36px 20px}
+  footer{padding:36px 18px 26px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- SPLASH SCREEN - Solo marca al entrar -->
-<div class="splash-screen" id="splash">
-    <div class="splash-logo">✨ GlamBrat Co. 👁️</div>
-    <div class="splash-tagline">Transforma tu mirada</div>
-    <button class="splash-enter" onclick="enterSite()">Ver Productos 💜</button>
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-orb sorb1"></div>
+  <div class="splash-orb sorb2"></div>
+  <div class="splash-orb sorb3"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-stars" id="splashStars"></div>
+  <div class="splash-logo-wrap">
+    <div class="splash-logo">GlamBrat</div>
+    <div class="splash-tagline">✦ Lentes de Contacto · Colombia ✦</div>
+  </div>
+  <div class="splash-dots">
+    <div class="splash-dot"></div>
+    <div class="splash-dot"></div>
+    <div class="splash-dot"></div>
+  </div>
 </div>
 
-<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<!-- BG ORBS -->
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
 
-<a class="wa-float" href="https://wa.me/573189653717" target="_blank">💬</a>
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/573189653717" target="_blank" title="Escríbenos por WhatsApp">💬</a>
 
+<!-- NAV -->
 <nav>
-<div class="nav-logo">GlamBrat Co. 👁️</div>
-<div class="nav-right">
-<a class="nav-cta" href="https://wa.me/573189653717" target="_blank">💬 Pedir ahora</a>
-<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-</div>
+  <div class="nav-logo">GlamBrat Co. ✦</div>
+  <ul class="nav-links">
+    <li><a href="#productos">Lentes</a></li>
+    <li><a href="#accesorios">Accesorios</a></li>
+    <li><a href="#nosotros">Nosotras</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">✦ Ver Lentes</button>
 </nav>
 
-<!-- Overlay para cerrar menú al dar click fuera -->
-<div class="dropdown-overlay" id="overlay" onclick="closeMenu()"></div>
-
-<!-- MENÚ DESPLEGABLE - Navegación directa a secciones -->
-<div class="dropdown" id="dropdown">
-    
-    <div class="dropdown-section">
-        <div class="dropdown-trigger" onclick="toggleSub('sub-lentes',this)">
-            <span>👁️ Lentes de Contacto</span>
-            <span class="arrow">▼</span>
-        </div>
-        <div class="dropdown-sub" id="sub-lentes">
-            <a href="#lentes" onclick="closeMenu()">👁️ Ver Todos los Lentes</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🌫️ Mirage Gray</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">💙 Pattaya Blue</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">💙 Sweet Secret Blue</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🌊 Russia Blue</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🐺 Margaret Gray</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🍯 Honey</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🤎 Sugar Pop Brown</a>
-            <a href="#lentes" onclick="closeMenu(); setTimeout(()=>document.getElementById('lentes').scrollIntoView({behavior:'smooth'}),100)">🩵 DY Light Blue</a>
-        </div>
-    </div>
-    
-    <div class="dropdown-section">
-        <div class="dropdown-trigger" onclick="toggleSub('sub-acc',this)">
-            <span>💆 Accesorios</span>
-            <span class="arrow">▼</span>
-        </div>
-        <div class="dropdown-sub" id="sub-acc">
-            <a href="#accesorios" onclick="closeMenu()">🧴 Solución Multi Soluter</a>
-            <a href="#accesorios" onclick="closeMenu()">✈️ Kit Viaje</a>
-        </div>
-    </div>
-    
-    <div class="dropdown-section">
-        <div class="dropdown-trigger" onclick="toggleSub('sub-pestanas',this)">
-            <span>✨ Pestañas Postizas</span>
-            <span class="arrow">▼</span>
-        </div>
-        <div class="dropdown-sub" id="sub-pestanas">
-            <a href="#pestanas" onclick="closeMenu()">🖤 Próximamente...</a>
-        </div>
-    </div>
-    
-    <div class="dropdown-section">
-        <a class="dropdown-link" href="#envios" onclick="closeMenu()">🚚 Envíos & Pago Contra Entrega</a>
-    </div>
-    
-    <div class="dropdown-section">
-        <a class="dropdown-link" href="#nosotros" onclick="closeMenu()">💜 Nosotras</a>
-    </div>
-    
-    <div class="dropdown-section">
-        <a class="dropdown-link" href="#reviews" onclick="closeMenu()">💬 Reviews</a>
-    </div>
-    
-    <div class="dropdown-section">
-        <a class="dropdown-link" href="#contacto" onclick="closeMenu()">📩 Contacto</a>
-    </div>
-</div>
-
-<!-- SECCIÓN 1: LENTES DE CONTACTO (Destacada) -->
-<section class="hero-lentes" id="inicio">
-    <h1 class="hero-lentes-title">👁️ Lentes de Contacto Premium</h1>
-    <p class="hero-lentes-sub">Transforma tu mirada con los lentes más chic y vibrantes de Colombia. Calidad premium, precios accesibles. ✨</p>
-    <a class="lentes-cta" href="#lentes">Ver Colección 💜</a>
+<!-- HERO -->
+<section class="hero">
+  <span class="hstar">✦</span>
+  <span class="hstar">✦</span>
+  <span class="hstar">✦</span>
+  <span class="hstar">✦</span>
+  <span class="hstar">✦</span>
+  <div class="hero-eyebrow">✨ Lentes de Contacto &nbsp;·&nbsp; Colombia</div>
+  <h1 class="hero-title">
+    <span class="t-glam">Glam</span>
+    <span class="t-brat">Brat</span>
+  </h1>
+  <p class="hero-sub">Transforma tu mirada con los lentes más <em>chic</em> y vibrantes. ¡Sé la Brat que siempre quisiste ser!</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">💜 Ver Colección</button>
+    <a class="btn-ghost" href="https://wa.me/573189653717" target="_blank">💬 Escríbenos</a>
+  </div>
 </section>
 
-<div class="marquee-section"><div class="marquee-track" id="marqueeTrack"></div></div>
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
 
-<!-- SECCIÓN 2: ENVÍOS Y PAGO CONTRA ENTREGA (Destacada) -->
-<section class="envios-section" id="envios">
-    <div class="envios-container reveal">
-        <h2 class="envios-title">🚚 Envíos con Pago Contra Entrega</h2>
-        <p class="envios-sub">¡No necesitas pagar antes! Recibe tus lentes y paga al momento de recibir. 💚</p>
-        
-        <div class="envios-badge">
-            📍 Disponible en: Bosa, Soacha. 
-        </div>
-        
-        <p style="font-size:1.1rem;opacity:.9;margin-bottom:20px;">Envíos rápidos y seguros directo a tu puerta</p>
-        
-        <div class="ciudades-destacadas">
-            <div class="ciudad-destacada">📍 Bosa</div>
-           
-            <div class="ciudad-destacada">📍 Soacha</div>
-        </div>
-        
-        <a class="wa-contact-btn" href="https://wa.me/573189653717?text=Hola!%20Quiero%20hacer%20un%20pedido%20con%20pago%20contra%20entrega%20🚚" target="_blank" style="margin-top:40px;">
-            💬 Hacer Pedido con Pago Contra Entrega
-        </a>
-    </div>
+<!-- PRODUCTOS -->
+<section id="productos">
+  <h2 class="sec-title reveal">✦ Nuestra Colección</h2>
+  <p class="sec-sub reveal">Cada par a solo <strong style="color:#c9a84c">$35.000 COP</strong> — elige tu color favorito y dale un glow-up a tu mirada</p>
+  <div class="products-grid" id="productsGrid"></div>
 </section>
 
-<!-- SECCIÓN 3: PRODUCTOS DESTACADOS -->
-<section id="destacados">
-<h2 class="sec-title reveal">⭐ Productos Destacados</h2>
-<p class="sec-sub reveal">Los favoritos de nuestras clientas --- $35.000 COP cada par ✨</p>
-<div class="products-grid" id="featuredGrid"></div>
+<!-- WHY US -->
+<section id="nosotros">
+  <h2 class="sec-title reveal">💜 ¿Por qué GlamBrat?</h2>
+  <p class="sec-sub reveal">El emprendimiento más glam de Colombia 🇨🇴</p>
+  <div class="why-grid">
+    <div class="why-card reveal"><span class="why-icon">💎</span><h3>Calidad Premium</h3><p>Lentes certificados, cómodos y seguros para uso diario o especial.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🌈</span><h3>Colores Únicos</h3><p>Desde grises misteriosos hasta azules vibrantes y verdes naturales.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🚀</span><h3>Envío Rápido</h3><p>Recibe tus lentes en tiempo récord con nuestro servicio express.</p></div>
+    <div class="why-card reveal"><span class="why-icon">✨</span><h3>Asesoría Glam</h3><p>Te ayudamos a elegir el color perfecto para tu tono de piel.</p></div>
+  </div>
 </section>
 
-<section id="lentes">
-<h2 class="sec-title reveal">👁️ Todos los Lentes</h2>
-<p class="sec-sub reveal">Colección completa --- $35.000 COP cada par ✨</p>
-<div class="products-grid" id="lentesGrid"></div>
-</section>
-
-<section id="accesorios">
-<h2 class="sec-title reveal">💆 Accesorios</h2>
-<p class="sec-sub reveal">Todo lo que necesitas para cuidar tus lentes 🧴✨</p>
-<div class="products-grid" style="max-width:680px;margin:0 auto">
-<div class="product-card reveal">
-<div class="product-img-wrap"><img src="soluter.jpg" alt="Solución" loading="lazy"/><span class="lens-badge">🧴 Esencial</span></div>
-<div class="product-info">
-<div class="product-name">Solución Multi Soluter</div>
-<p class="product-desc">Solución multipropósito 120ml para conservar, limpiar y desinfectar tus lentes. Marca Oopharm.</p>
-<div class="product-specs"><span class="spec-pill">💧 120ml</span><span class="spec-pill">🧼 Multipropósito</span></div>
-<div class="product-footer"><div class="price">$16.000 <span>COP</span></div><a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Quiero%20la%20*Solución%20Multi%20Soluter*%20a%20$16.000%20COP" target="_blank">💬 Pedir</a></div>
-</div>
-</div>
-<div class="product-card reveal">
-<div class="product-img-wrap"><img src="kit_viaje.jpg" alt="Kit Viaje" loading="lazy"/><span class="lens-badge">✈️ Kit</span></div>
-<div class="product-info">
-<div class="product-name">Kit Viaje para Lentes</div>
-<p class="product-desc">Cajita porta lentes, chupita de silicona y pinzas. ¡Todo lo que necesitas en un solo kit!</p>
-<div class="product-specs"><span class="spec-pill">📦 Cajita</span><span class="spec-pill">🔵 Chupita</span><span class="spec-pill">🥄 Pinzas</span></div>
-<div class="product-footer"><div class="price">$5.000 <span>COP</span></div><a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Quiero%20el%20*Kit%20de%20Viaje*%20a%20$5.000%20COP" target="_blank">💬 Pedir</a></div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="pestanas">
-<h2 class="sec-title reveal">✨ Pestañas Postizas</h2>
-<p class="sec-sub reveal">¡Próximamente! Estamos preparando lo mejor para ti 💜</p>
-<div style="text-align:center">
-<div class="reveal" style="background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:26px;padding:44px;max-width:480px;margin:0 auto;backdrop-filter:blur(12px)">
-<div style="font-size:3.5rem;margin-bottom:14px">✨</div>
-<h3 style="font-family:'Fredoka One',cursive;font-size:1.7rem;margin-bottom:10px;color:var(--gold)">Muy Pronto</h3>
-<p style="opacity:.85;line-height:1.6;margin-bottom:22px;font-size:.95rem">Estamos trabajando para traerte las pestañas postizas más glam. ¡Escríbenos para que te avisemos cuando lleguen! 💅</p>
-<a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Quiero%20que%20me%20avisen%20cuando%20lleguen%20las%20pestañas%20postizas%20✨" target="_blank" style="font-size:.95rem;padding:11px 22px">💬 Avísame cuando lleguen</a>
-</div>
-</div>
-</section>
-
+<!-- REVIEWS -->
 <section id="reviews">
-<h2 class="sec-title reveal">💬 Lo que dicen las Brats</h2>
-<p class="sec-sub reveal">Reseñas reales de nuestras clientas 🌟</p>
-<div class="testi-grid">
-<div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Me llegaron súper rápido y son hermosos, el Mirage Gray se ve exactamente como en la foto. ¡Definitivamente vuelvo a pedir!"</p><div class="testi-author">--- Valentina M. 💜</div></div>
-<div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"El pago contra entrega me dio mucha confianza. Los lentes llegaron perfectos y el Pattaya Blue es hermoso. ¡100% recomendados!"</p><div class="testi-author">--- Daniela R. 💙</div></div>
-<div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Pedí los Honey y son divinos. Muy cómodos para todo el día. ¡GlamBrat es lo mejor de Bogotá!"</p><div class="testi-author">--- Mariana T. ✨</div></div>
-</div>
-</section>
-
-<!-- SECCIÓN NOSOTROS - AHORA EN EL FONDO ANTES DEL FOOTER -->
-<section class="nosotros-fondo" id="nosotros">
-    <div class="about-inner">
-        <div class="about-text reveal">
-            <h2>💜 Somos GlamBrat Co.</h2>
-            <p>Somos un emprendimiento colombiano 🇨🇴 apasionado por la belleza y el estilo. Nuestro objetivo es ayudarte a transformar tu mirada con lentes de contacto de alta calidad a precios accesibles.</p>
-            <p>Cada lente está cuidadosamente seleccionado para garantizar comodidad, seguridad y un look espectacular digno de una Brat 💅✨</p>
-        </div>
-        <div class="about-cards reveal">
-            <div class="about-card">
-                <span class="about-card-icon">✨</span>
-                <div>
-                    <h3>Calidad Premium</h3>
-                    <p>Lentes certificados y seguros para tu mirada.</p>
-                </div>
-            </div>
-            <div class="about-card">
-                <span class="about-card-icon">💅</span>
-                <div>
-                    <h3>Asesoría Personalizada</h3>
-                    <p>Te ayudamos a elegir el color perfecto.</p>
-                </div>
-            </div>
-            <div class="about-card">
-                <span class="about-card-icon">🚚</span>
-                <div>
-                    <h3>Pago Contra Entrega</h3>
-                    <p>Disponible en Bosa y Soacha.</p>
-                </div>
-            </div>
-            <div class="about-card">
-                <span class="about-card-icon">💬</span>
-                <div>
-                    <h3>Atención por WhatsApp</h3>
-                    <p>Respondemos rápido y con mucho amor 💜</p>
-                </div>
-            </div>
-        </div>
+  <h2 class="sec-title reveal">💬 Lo que dicen las Brats</h2>
+  <p class="sec-sub reveal">Reseñas reales de nuestras clientas 💜</p>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Me llegaron súper rápido y son hermosos, el color Mirage Gray se ve exactamente como en la foto. ¡Definitivamente vuelvo a pedir!"</p>
+      <div class="testi-author">— Valentina M.</div>
     </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Los de Estonia Green son mis favoritos, me hacen ver como una Bratz real. ¡El precio es increíble para la calidad que tienen!"</p>
+      <div class="testi-author">— Daniela R.</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Pedí los Honey y los Choco Gray, los dos son divinos. Muy cómodos para llevar todo el día. ¡GlamBrat es lo mejor!"</p>
+      <div class="testi-author">— Mariana T.</div>
+    </div>
+  </div>
 </section>
 
+<!-- ACCESORIOS -->
+<section id="accesorios">
+  <h2 class="sec-title reveal">✨ Accesorios</h2>
+  <p class="sec-sub reveal">Todo lo que necesitas para cuidar tus lentes</p>
+  <div class="products-grid" style="max-width:680px;margin:0 auto">
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="soluter.jpg" alt="Solución Multi Soluter" loading="lazy"/>
+        <span class="lens-badge">💧 Esencial</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Solución Multi Soluter</div>
+        <p class="product-desc">Solución multipropósito 50ml para conservar, limpiar, lubricar y desinfectar tus lentes. Marca Oopharm certificada.</p>
+        <div class="product-specs">
+          <span class="spec-pill">💧 50ml</span>
+          <span class="spec-pill">✦ Multipropósito</span>
+          <span class="spec-pill">✅ Certificada</span>
+        </div>
+        <div class="product-footer">
+          <div class="price">$16.000 <span>COP</span></div>
+          <a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Me%20interesa%20la%20*Solución%20Multi%20Soluter*%20a%20%2416.000%20COP%20✨" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="kit_viaje.jpg" alt="Kit Viaje" loading="lazy"/>
+        <span class="lens-badge">✈️ Kit Viaje</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Kit Viaje para Lentes</div>
+        <p class="product-desc">Kit completo: cajita porta lentes, chupita de silicona y pinzas para remover. ¡Todo en uno!</p>
+        <div class="product-specs">
+          <span class="spec-pill">📦 Cajita</span>
+          <span class="spec-pill">🔵 Chupita</span>
+          <span class="spec-pill">🔧 Pinzas</span>
+        </div>
+        <div class="product-footer">
+          <div class="price">$5.000 <span>COP</span></div>
+          <a class="wa-btn" href="https://wa.me/573189653717?text=Hola!%20Me%20interesa%20el%20*Kit%20de%20Viaje%20para%20Lentes*%20a%20%245.000%20COP%20✨" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
 <section id="contacto">
-<div class="newsletter-box reveal">
-<h2>💬 ¡Haz tu pedido!</h2>
-<p>Escríbenos por WhatsApp para tu pedido, dudas o asesoría. ¡Respondemos rápido! 💜</p>
-<a class="wa-contact-btn" href="https://wa.me/573189653717" target="_blank">💬 Escribir por WhatsApp</a>
-<p style="margin-top:18px;font-size:.83rem;opacity:.7;">📱 +57 318 965 3717</p>
-</div>
+  <div class="newsletter-box reveal">
+    <h2>💬 ¡Haz tu pedido!</h2>
+    <p>Escríbenos por WhatsApp para hacer tu pedido, resolver dudas o recibir asesoría personalizada 💜</p>
+    <a class="wa-contact-btn" href="https://wa.me/573189653717" target="_blank">💬 Escribir por WhatsApp</a>
+    <p style="margin-top:18px;font-size:.83rem;color:rgba(255,255,255,.35);">📱 +57 318 965 3717</p>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<div class="footer-logo">GlamBrat Co. 👁️✨</div>
-<p class="footer-tagline">Transforma tu mirada, transforma tu mundo 💜</p>
-<div class="footer-social">
-<a class="soc" href="https://wa.me/573189653717" target="_blank">💬</a>
-<a class="soc" href="#" title="Instagram">📸</a>
-<a class="soc" href="#" title="TikTok">🎵</a>
-<a class="soc" href="#" title="Facebook">💙</a>
-</div>
-<p class="footer-copy">© 2025 GlamBrat Co. --- Todos los derechos reservados 💅 Colombia 🇨🇴</p>
+  <div class="footer-logo">GlamBrat Co. ✦</div>
+  <p class="footer-tagline">Transforma tu mirada, transforma tu mundo 💜</p>
+  <div class="footer-links">
+    <a href="#productos">Colección</a>
+    <a href="#nosotros">Nosotras</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="footer-social">
+    <a class="soc" href="https://wa.me/573189653717" target="_blank">💬</a>
+    <a class="soc" href="#">📸</a>
+    <a class="soc" href="#">🎵</a>
+    <a class="soc" href="#">💙</a>
+  </div>
+  <p class="footer-copy">© 2025 GlamBrat Co. — Hecho con 💜 en Colombia 🇨🇴</p>
 </footer>
 
 <script>
-const WA="https://wa.me/573189653717";
+const WA = "https://wa.me/573189653717";
 
-const allProducts=[
-{name:"Sweet Secret Blue",desc:"Azul grisáceo con detalles dorados únicos. Un look misterioso y elegante que sorprece.",dia:"14.2mm",use:"Anual",badge:"💙 Misterioso",img:"67650.jpg"},
-{name:"Russia Blue",desc:"Azul turquesa intenso y vibrante. Perfecto para un look dramático y lleno de personalidad.",dia:"14.2mm",use:"Anual",badge:"🌊 Intenso",img:"67651.jpg"},
-{name:"Margaret Gray",desc:"Gris profundo y elegante con efecto de pupila grande. Look natural pero impactante.",dia:"14.2mm",use:"Anual",badge:"🐺 Elegante",img:"67652.jpg"},
-{name:"Mirage Gray",desc:"Gris misterioso y profundo que amplía tu mirada. Perfecto para un look sofisticado.",dia:"14.2mm",use:"Anual",badge:"🌫️ Top Pick",img:"66644.jpg"},
-{name:"Pattaya Blue",desc:"Azul intenso inspirado en el mar. DIA 14.2mm con 40% de agua para máximo confort.",dia:"14.2mm",water:"40%",use:"Anual",badge:"💙 Best Seller",img:"66596.jpg"},
-{name:"Honey",desc:"Tono miel suave y natural. Con 40% de agua para sentirlos todo el día sin molestias.",dia:"14.2mm",bc:"8.5mm",water:"40%",use:"Anual",badge:"🍯 Natural",img:"66353.jpg"},
-{name:"Sugar Pop Brown",desc:"Marrón suave y romántico. Perfectos para un look casual y natural con toque de dulzura.",dia:"14.2mm",use:"Anual",badge:"🤎 Cute",img:"65662.jpg"},
-{name:"DY Light Blue",desc:"Azul cielo suave y etéreo. Un look soñador y delicado que te hace brillar sin esfuerzo.",dia:"14.2mm",use:"Anual",badge:"🩵 Dreamy",img:"65552.jpg"}
+// Splash auto-dismiss
+(function(){
+  const stars = document.getElementById('splashStars');
+  const icons = ['✦','✧','⋆','★'];
+  for(let i=0;i<28;i++){
+    const s = document.createElement('span');
+    s.className='sstar';
+    s.textContent=icons[Math.floor(Math.random()*icons.length)];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${Math.random()*1+0.5}rem;animation-delay:${Math.random()*4}s;animation-duration:${Math.random()*2+2.5}s;`;
+    stars.appendChild(s);
+  }
+  setTimeout(()=>{
+    const splash=document.getElementById('splash');
+    splash.classList.add('hide');
+    setTimeout(()=>splash.style.display='none',900);
+  }, 2500);
+})();
+
+// Productos
+const products = [
+  {name:"Café Noche Estrellada",desc:"Café cálido con destellos únicos. Un look sofisticado y natural que enamora.",color:"Café",dia:"14.2mm",use:"Anual",badge:"🌟 Nuevo",img:"67688.jpg"},
+  {name:"Sweet Secret Blue",desc:"Azul grisáceo con detalles dorados. Un look misterioso y elegante.",color:"Azul Secreto",dia:"14.2mm",use:"Anual",badge:"🌙 Misterioso",img:"67650.jpg"},
+  {name:"Russia Blue",desc:"Azul turquesa intenso y vibrante. Para un look dramático y lleno de personalidad.",color:"Azul Rusia",dia:"14.2mm",use:"Anual",badge:"💙 Intenso",img:"67651.jpg"},
+  {name:"Margaret Gray",desc:"Gris profundo y elegante con efecto de pupila grande. Natural pero impactante.",color:"Gris Margaret",dia:"14.2mm",use:"Anual",badge:"✦ Elegante",img:"67652.jpg"},
+  {name:"Mirage Gray",desc:"Gris misterioso que amplía tu mirada. Perfecto para un look sofisticado.",color:"Gris Mirage",dia:"14.2mm",use:"Anual",badge:"⭐ Top Pick",img:"66644.jpg"},
+  {name:"Pattaya Blue",desc:"Azul intenso inspirado en el mar. 40% de agua para máximo confort.",color:"Azul Pattaya",dia:"14.2mm",water:"40%",use:"Anual",badge:"🔥 Best Seller",img:"66596.jpg"},
+  {name:"Honey",desc:"Tono miel suave y natural. 40% de agua para sentirlos todo el día.",color:"Miel",dia:"14.2mm",bc:"8.5mm",water:"40%",use:"Anual",badge:"🍯 Natural",img:"66353.jpg"},
+  {name:"Choco Gray",desc:"La mezcla perfecta entre gris y café. Un efecto que transforma tu mirada de forma increíble.",color:"Choco Gris",dia:"14.2mm",use:"Anual",badge:"✨ Favorito",img:"choco_gray.jpg"},
+  {name:"Sugar Pop Brown",desc:"Marrón suave y romántico para un look casual con toque de dulzura.",color:"Marrón Sugar",dia:"14.2mm",use:"Anual",badge:"🍬 Cute",img:"65662.jpg"},
+  {name:"DY Light Blue",desc:"Azul cielo suave y etéreo. Un look soñador que te hace brillar.",color:"Azul Cielo",dia:"14.2mm",use:"Anual",badge:"☁️ Dreamy",img:"65552.jpg"},
 ];
 
-function buildCard(p,delay){
-const specs=[];
-if(p.dia)specs.push(`📏 ${p.dia}`);
-if(p.bc)specs.push(`BC ${p.bc}`);
-if(p.water)specs.push(`💧 ${p.water}`);
-if(p.use)specs.push(`📅 ${p.use}`);
-const waMsg=encodeURIComponent(`Hola! Me interesa el lente *${p.name}* a $35.000 COP 👁️✨`);
-return `<div class="product-card reveal" style="transition-delay:${delay}s">
-<div class="product-img-wrap"><img src="${p.img}" alt="${p.name}" loading="lazy"/><span class="lens-badge">${p.badge}</span></div>
-<div class="product-info">
-<div class="product-name">${p.name}</div>
-<p class="product-desc">${p.desc}</p>
-<div class="product-specs">${specs.map(s=>`<span class="spec-pill">${s}</span>`).join('')}</div>
-<div class="product-footer"><div class="price">$35.000 <span>COP</span></div><a class="wa-btn" href="${WA}?text=${waMsg}" target="_blank">💬 Pedir</a></div>
-</div></div>`;
-}
+const grid = document.getElementById('productsGrid');
+products.forEach((p,i)=>{
+  const specs=[];
+  if(p.dia)   specs.push(`📏 ${p.dia}`);
+  if(p.bc)    specs.push(`BC ${p.bc}`);
+  if(p.water) specs.push(`💧 ${p.water}`);
+  if(p.use)   specs.push(`📅 ${p.use}`);
+  const specsHTML=specs.map(s=>`<span class="spec-pill">${s}</span>`).join('');
+  const waMsg=encodeURIComponent(`Hola! Me interesa el lente *${p.name}* de $35.000 COP ✨`);
+  grid.innerHTML+=`
+    <div class="product-card reveal" style="transition-delay:${i*0.05}s">
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        <span class="lens-badge">${p.badge}</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-specs">${specsHTML}</div>
+        <div class="product-footer">
+          <div class="price">$35.000 <span>COP</span></div>
+          <a class="wa-btn" href="${WA}?text=${waMsg}" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>`;
+});
 
-const fg=document.getElementById('featuredGrid');
-[allProducts[3],allProducts[4],allProducts[5],allProducts[0]].forEach((p,i)=>fg.innerHTML+=buildCard(p,i*0.07));
-
-const lg=document.getElementById('lentesGrid');
-allProducts.forEach((p,i)=>lg.innerHTML+=buildCard(p,i*0.05));
-
-const items=["✦ GLAMBRAT CO.","👁️ LENTES PREMIUM","💜 COLOMBIA","🚚 PAGO CONTRA ENTREGA","💅 LOOK BRATZ","🌟 $35.000 COP","📍 BOSA · BOGOTÁ · SOACHA","💬 PIDE POR WHATSAPP"];
+// Marquee
+const items=["✦ GLAMBRAT CO.","💜 LENTES PREMIUM","🇨🇴 COLOMBIA","🚀 ENVÍO RÁPIDO","✨ LOOK BRATZ","💰 $35.000 COP","🌈 COLORES VIBRANTES","💫 BRATZ VIBES","💬 PIDE POR WHATSAPP"];
 const track=document.getElementById('marqueeTrack');
 let html='';
-for(let i=0;i<4;i++)items.forEach(t=>html+=`<span class="marquee-item">${t}</span>`);
+for(let i=0;i<4;i++) items.forEach(t=>html+=`<span class="marquee-item">${t}</span>`);
 track.innerHTML=html;
 
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-// Splash Screen
-function enterSite(){
-    document.getElementById('splash').classList.add('hidden');
-    setTimeout(()=>{
-        document.getElementById('splash').style.display='none';
-    },800);
-}
-
-// Menú hamburguesa mejorado
-const hamburger=document.getElementById('hamburger');
-const dropdown=document.getElementById('dropdown');
-const overlay=document.getElementById('overlay');
-
-hamburger.addEventListener('click',e=>{
-    e.stopPropagation();
-    hamburger.classList.toggle('open');
-    dropdown.classList.toggle('open');
-    overlay.classList.toggle('open');
-    document.body.style.overflow = dropdown.classList.contains('open') ? 'hidden' : '';
-});
-
-function toggleSub(id,trigger){
-    const sub=document.getElementById(id);
-    sub.classList.toggle('open');
-    trigger.classList.toggle('active');
-}
-
-function closeMenu(){
-    hamburger.classList.remove('open');
-    dropdown.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    
-    // Cerrar submenús
-    document.querySelectorAll('.dropdown-sub').forEach(sub=>sub.classList.remove('open'));
-    document.querySelectorAll('.dropdown-trigger').forEach(tr=>tr.classList.remove('active'));
-}
-
-// Cerrar menú al hacer click en overlay
-overlay.addEventListener('click', closeMenu);
-
-// Cerrar menú con tecla Escape
-document.addEventListener('keydown',e=>{
-    if(e.key==='Escape') closeMenu();
-});
-
-// Sparkles en mouse
-document.addEventListener('mousemove',function(e){
-    if(Math.random()>.86){
-        const s=document.createElement('div');
-        s.textContent=['✦','✨','⭐','💜','💅'][Math.floor(Math.random()*5)];
-        s.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;z-index:9999;font-size:${Math.random()*10+10}px;animation:sparkleOut 0.8s ease forwards;transform:translate(-50%,-50%)`;
-        document.body.appendChild(s);
-        setTimeout(()=>s.remove(),800);
-    }
-});
-
-const st=document.createElement('style');
-st.textContent=`@keyframes sparkleOut{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-160%) scale(0.3)}}`;
-document.head.appendChild(st);
+// Reveal scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
