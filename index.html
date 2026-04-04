@@ -159,7 +159,7 @@
   </div>
 </div>
 
-<!-- Carrito Modal (Nuevo) -->
+<!-- Carrito Modal -->
 <div class="modal-overlay" id="cartModalOverlay">
   <div class="modal" style="max-width: 500px;">
     <div class="modal-body">
@@ -201,7 +201,7 @@
 
   // Variables globales
   let currentCategory = "lentes";
-  let cart = []; // Array de objetos { id, cantidad }
+  let cart = [];
 
   // ----- FUNCIONES DEL CARRITO -----
   function addToCart(productId) {
@@ -227,12 +227,14 @@
     }
     updateCartUI();
     saveCartToLocalStorage();
+    renderProducts(); // Para actualizar los botones de cantidad en las tarjetas
   }
 
   function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     updateCartUI();
     saveCartToLocalStorage();
+    renderProducts();
   }
 
   function getCartTotal() {
@@ -240,6 +242,11 @@
       const product = PRODUCTOS.find(p => p.id === item.id);
       return total + (product ? product.precio * item.cantidad : 0);
     }, 0);
+  }
+
+  function getProductQuantity(productId) {
+    const item = cart.find(item => item.id === productId);
+    return item ? item.cantidad : 0;
   }
 
   function updateCartUI() {
@@ -277,5 +284,11 @@
   }
 
   function saveCartToLocalStorage() {
-    localStorage
+    localStorage.setItem('glambrat_cart', JSON.stringify(cart));
+  }
 
+  function loadCartFromLocalStorage() {
+    const savedCart = localStorage.getItem('glambrat_cart');
+    if (savedCart) {
+      cart = JSON.parse(savedCart);
+      updateCartUI
