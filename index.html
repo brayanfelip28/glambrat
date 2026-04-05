@@ -178,26 +178,45 @@
 <footer>Hecho con amor por <strong>GlamBrat Co.</strong> &middot; Bogota, Colombia &middot; 2025 &#10022;</footer>
 
 <script>
-  // ----- BASE DE DATOS DE PRODUCTOS -----
+  // ----- BASE DE DATOS DE PRODUCTOS ACTUALIZADA -----
+  // Lentes: precio 35.000 COP c/u
+  // Pestañas: se venden por paquetes de pares (5 pares, 7 pares, 10 pares)
+  // Accesorios: precios originales
+
   const PRODUCTOS = [
-    // Lentes de Contacto
-    { id: 1, nombre: "Honey", categoria: "lentes", precio: 45000, descripcion: "Lentes de contacto color miel, ideal para un look natural y brillante.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/QF5J6cP.jpg" },
-    { id: 2, nombre: "Sugar Pop Brown", categoria: "lentes", precio: 52000, descripcion: "Lentes color café azucarado, perfectos para un look dulce y profundo.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/XZ7k2Lr.jpg" },
-    { id: 3, nombre: "Light Blue", categoria: "lentes", precio: 49000, descripcion: "Lentes azul claro, aportan un toque de frescura y misterio.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 50%", "Duración: 6 meses"], img: "https://i.imgur.com/1jK8QvW.jpg" },
-    { id: 4, nombre: "Sweet Secret Blue", categoria: "lentes", precio: 55000, descripcion: "Azul profundo con un secreto brillante, ideal para looks de impacto.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 60%", "Duración: 1 año"], img: "https://i.imgur.com/3VnLp2x.jpg" },
-    { id: 5, nombre: "Russia Blue", categoria: "lentes", precio: 60000, descripcion: "El clásico azul ruso, un color intenso y elegante.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/fQvM5xN.jpg" },
-    { id: 6, nombre: "Margaret Gray", categoria: "lentes", precio: 48000, descripcion: "Gris humo, sutil y sofisticado para el día a día.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 52%", "Duración: 1 año"], img: "https://i.imgur.com/7yHpG4d.jpg" },
-    { id: 7, nombre: "Choco Gray", categoria: "lentes", precio: 51000, descripcion: "Mezcla de gris y chocolate, un color único y versátil.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/WkQjN3L.jpg" },
-    // Pestañas Postizas
-    { id: 8, nombre: "Gomitas", categoria: "pestanas", precio: 25000, descripcion: "Pestañas efecto chicle, suaves y esponjosas.", especificaciones: ["Largo: 12mm", "Estilo: Natural", "Reutilizables"], img: "https://i.imgur.com/RcS8L9M.jpg" },
-    { id: 9, nombre: "Pestañas Clásicas", categoria: "pestanas", precio: 22000, descripcion: "El estilo clásico que nunca falla, volumen y longitud equilibrados.", especificaciones: ["Largo: 10-14mm", "Estilo: Clásico", "Reutilizables"], img: "https://i.imgur.com/JF6p7Kq.jpg" },
-    { id: 10, nombre: "Pestañas Volumen", categoria: "pestanas", precio: 32000, descripcion: "Máximo volumen para una mirada de infarto.", especificaciones: ["Largo: 12-16mm", "Estilo: Volumen", "Reutilizables"], img: "https://i.imgur.com/Hg5L9fT.jpg" },
-    { id: 11, nombre: "Pestañas Glam", categoria: "pestanas", precio: 35000, descripcion: "Para las noches de fiesta, largas y dramáticas.", especificaciones: ["Largo: 14-18mm", "Estilo: Glamour", "Reutilizables"], img: "https://i.imgur.com/l7X3fKj.jpg" },
-    // Accesorios
-    { id: 12, nombre: "Aplicador de Pestañas", categoria: "accesorios", precio: 8000, descripcion: "Aplicador de metal para una colocación precisa y fácil.", especificaciones: ["Material: Acero Inoxidable", "Antideslizante"], img: "https://i.imgur.com/6dF5gH8.jpg" },
-    { id: 13, nombre: "Pegamento para Pestañas", categoria: "accesorios", precio: 12000, descripcion: "Pegamento de larga duración, seguro para tus ojos.", especificaciones: ["Secado rápido", "Hipoalergénico", "Invisible"], img: "https://i.imgur.com/4VcH9kD.jpg" },
-    { id: 14, nombre: "Estuche para Lentes", categoria: "accesorios", precio: 15000, descripcion: "Estuche rígido para mantener tus lentes de contacto seguros.", especificaciones: ["Colores: Rosa, Morado, Azul", "Incluye líquido de muestra"], img: "https://i.imgur.com/1rE6w2L.jpg" }
+    // Lentes de Contacto (7 productos, precio 35000)
+    { id: 1, nombre: "Honey", categoria: "lentes", precio: 35000, descripcion: "Lentes de contacto color miel, ideal para un look natural y brillante.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/QF5J6cP.jpg" },
+    { id: 2, nombre: "Sugar Pop Brown", categoria: "lentes", precio: 35000, descripcion: "Lentes color café azucarado, perfectos para un look dulce y profundo.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/XZ7k2Lr.jpg" },
+    { id: 3, nombre: "Light Blue", categoria: "lentes", precio: 35000, descripcion: "Lentes azul claro, aportan un toque de frescura y misterio.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 50%", "Duración: 6 meses"], img: "https://i.imgur.com/1jK8QvW.jpg" },
+    { id: 4, nombre: "Sweet Secret Blue", categoria: "lentes", precio: 35000, descripcion: "Azul profundo con un secreto brillante, ideal para looks de impacto.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 60%", "Duración: 1 año"], img: "https://i.imgur.com/3VnLp2x.jpg" },
+    { id: 5, nombre: "Russia Blue", categoria: "lentes", precio: 35000, descripcion: "El clásico azul ruso, un color intenso y elegante.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/fQvM5xN.jpg" },
+    { id: 6, nombre: "Margaret Gray", categoria: "lentes", precio: 35000, descripcion: "Gris humo, sutil y sofisticado para el día a día.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 52%", "Duración: 1 año"], img: "https://i.imgur.com/7yHpG4d.jpg" },
+    { id: 7, nombre: "Choco Gray", categoria: "lentes", precio: 35000, descripcion: "Mezcla de gris y chocolate, un color único y versátil.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/WkQjN3L.jpg" },
+    
+    // Pestañas Postizas por pares (bundles)
+    { id: 8, nombre: "5 Pares de Pestañas", categoria: "pestanas", precio: 25000, descripcion: "Pack de 5 pares de pestañas postizas de alta calidad. Perfecto para uso diario.", especificaciones: ["5 pares", "Estilo variado", "Reutilizables"], img: "https://i.imgur.com/RcS8L9M.jpg" },
+    { id: 9, nombre: "7 Pares de Pestañas", categoria: "pestanas", precio: 30000, descripcion: "Pack de 7 pares de pestañas postizas. Mayor cantidad, mejor precio.", especificaciones: ["7 pares", "Estilo variado", "Reutilizables"], img: "https://i.imgur.com/JF6p7Kq.jpg" },
+    { id: 10, nombre: "10 Pares de Pestañas", categoria: "pestanas", precio: 35000, descripcion: "Pack de 10 pares de pestañas postizas. Ideal para revender o uso prolongado.", especificaciones: ["10 pares", "Estilo variado", "Reutilizables"], img: "https://i.imgur.com/Hg5L9fT.jpg" },
+    
+    // Accesorios (sin cambios)
+    { id: 11, nombre: "Aplicador de Pestañas", categoria: "accesorios", precio: 8000, descripcion: "Aplicador de metal para una colocación precisa y fácil.", especificaciones: ["Material: Acero Inoxidable", "Antideslizante"], img: "https://i.imgur.com/6dF5gH8.jpg" },
+    { id: 12, nombre: "Pegamento para Pestañas", categoria: "accesorios", precio: 12000, descripcion: "Pegamento de larga duración, seguro para tus ojos.", especificaciones: ["Secado rápido", "Hipoalergénico", "Invisible"], img: "https://i.imgur.com/4VcH9kD.jpg" },
+    { id: 13, nombre: "Estuche para Lentes", categoria: "accesorios", precio: 15000, descripcion: "Estuche rígido para mantener tus lentes de contacto seguros.", especificaciones: ["Colores: Rosa, Morado, Azul", "Incluye líquido de muestra"], img: "https://i.imgur.com/1rE6w2L.jpg" }
   ];
+
+  // ----- FUNCIÓN PARA NORMALIZAR IMÁGENES (base64 o URL) -----
+  function normalizeImageUrl(src) {
+    if (!src || typeof src !== 'string') return 'https://placehold.co/400x300?text=Sin+imagen';
+    const trimmed = src.trim();
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('data:image')) {
+      return trimmed;
+    }
+    // Si parece base64 sin prefijo
+    if (/^[A-Za-z0-9+/=]+$/.test(trimmed)) {
+      return `data:image/jpeg;base64,${trimmed}`;
+    }
+    return 'https://placehold.co/400x300?text=Imagen+no+válida';
+  }
 
   // Variables globales
   let currentCategory = "lentes";
@@ -213,7 +232,7 @@
     }
     updateCartUI();
     saveCartToLocalStorage();
-    renderProducts(); // Refresca las tarjetas para actualizar los contadores
+    renderProducts();
   }
 
   function updateQuantity(productId, change) {
@@ -305,7 +324,7 @@
     let titulo = "";
     switch(currentCategory) {
       case "lentes": titulo = "Lentes de Contacto"; break;
-      case "pestanas": titulo = "Pestañas Postizas"; break;
+      case "pestanas": titulo = "Pestañas Postizas (por pares)"; break;
       case "accesorios": titulo = "Accesorios"; break;
       default: titulo = "Productos";
     }
@@ -322,9 +341,10 @@
     let html = '';
     filteredProducts.forEach(product => {
       const quantity = getProductQuantity(product.id);
+      const imgSrc = normalizeImageUrl(product.img);
       html += `
         <div class="card" data-id="${product.id}">
-          <img class="card-img" src="${product.img}" alt="${product.nombre}" loading="lazy">
+          <img class="card-img" src="${imgSrc}" alt="${product.nombre}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Error+de+imagen';">
           <div class="card-body">
             <div class="card-tag">${product.categoria === 'lentes' ? 'LENTES' : (product.categoria === 'pestanas' ? 'PESTAÑAS' : 'ACCESORIO')}</div>
             <h3>${product.nombre}</h3>
@@ -342,7 +362,6 @@
     });
     grid.innerHTML = html;
     
-    // Agregar event listeners para abrir el modal al hacer clic en la tarjeta
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('click', (e) => {
         const id = parseInt(card.dataset.id);
@@ -355,7 +374,11 @@
   // ----- MODAL DE PRODUCTO -----
   function openModal(product) {
     const modalOverlay = document.getElementById('modalOverlay');
-    document.getElementById('modalImg').src = product.img;
+    const modalImg = document.getElementById('modalImg');
+    const normalizedSrc = normalizeImageUrl(product.img);
+    modalImg.src = normalizedSrc;
+    modalImg.onerror = function() { this.onerror=null; this.src='https://placehold.co/400x300?text=Error+de+imagen'; };
+    
     document.getElementById('modalTag').innerText = product.categoria === 'lentes' ? 'LENTES DE CONTACTO' : (product.categoria === 'pestanas' ? 'PESTAÑAS POSTIZAS' : 'ACCESORIO');
     document.getElementById('modalTitle').innerText = product.nombre;
     document.getElementById('modalDesc').innerText = product.descripcion;
@@ -381,7 +404,6 @@
     document.getElementById('modalOverlay').classList.remove('active');
   }
 
-  // ----- MANEJO DEL MENÚ LATERAL Y CATEGORÍAS -----
   function openSidebar() {
     document.getElementById('sidebar').classList.add('active');
     document.getElementById('overlay').classList.add('active');
@@ -405,12 +427,10 @@
     loadCartFromLocalStorage();
     renderProducts();
     
-    // Event listeners del menú
     document.getElementById('menuBtn').addEventListener('click', openSidebar);
     document.getElementById('closeBtn').addEventListener('click', closeSidebar);
     document.getElementById('overlay').addEventListener('click', closeSidebar);
     
-    // Event listeners de categorías
     document.querySelectorAll('[data-tab]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -420,7 +440,6 @@
       });
     });
     
-    // Event listeners de modales
     document.getElementById('modalClose').addEventListener('click', closeModal);
     document.getElementById('modalOverlay').addEventListener('click', (e) => {
       if (e.target === document.getElementById('modalOverlay')) closeModal();
