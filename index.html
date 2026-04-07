@@ -385,10 +385,10 @@
 <script>
   // ── BASE DE DATOS ──
   const PRODUCTOS = [
-    { id:1, nombre:"Lente Honey", categoria:"lentes", precio:35000, descripcion:"Lente de contacto color miel con efecto natural. Diámetro 14.2mm, uso anual. Ideal para un look cálido y sofisticado.", especificaciones:["Color: Honey","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"images/lente-honey.jpg", nuevo:false, oferta:false },
-    { id:2, nombre:"Lente Sugar Pop Brown", categoria:"lentes", precio:35000, descripcion:"Lente café con efecto ampliador de pupila. Tono marrón cálido que se ve natural en ojos oscuros. Marca Bio-Essence.", especificaciones:["Color: Sugar Pop Brown","Marca: Bio-Essence","Efecto ampliador","Natural en ojos oscuros"], img:"images/lente-sugar-pop-brown.jpg", nuevo:true, oferta:false },
-    { id:3, nombre:"Lente Light Blue", categoria:"lentes", precio:38000, descripcion:"Lente azul claro con diseño limbal ring. Color vibrante y llamativo, perfecto para looks atrevidos y creativos.", especificaciones:["Color: DY-JY105 Light Blue","Limbal ring definido","Alta cobertura","Impacto visual"], img:"images/lente-light-blue.jpg", nuevo:true, oferta:true },
-    { id:4, nombre:"Lente Gomitas", categoria:"lentes", precio:38000, descripcion:"Lente gris con efecto gradiente y limbal ring oscuro pronunciado. Diámetro 14.2mm. Marca Duoxi. Look dolly y misterioso.", especificaciones:["Color: Gomitas","DIA: 14.2mm","Marca: Duoxi","Efecto gradiente gris","Limbal ring oscuro"], img:"images/lente-gomitas.jpg", nuevo:true, oferta:false }
+    { id:1, nombre:"Lente Honey", categoria:"lentes", precio:35000, descripcion:"Lente de contacto color miel con efecto natural. Diámetro 14.2mm, uso anual. Ideal para un look cálido y sofisticado.", especificaciones:["Color: Honey","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-honey.jpeg", nuevo:false, oferta:false },
+    { id:2, nombre:"Lente Sugar Pop Brown", categoria:"lentes", precio:35000, descripcion:"Lente café con efecto ampliador de pupila. Tono marrón cálido que se ve natural en ojos oscuros. Marca Bio-Essence.", especificaciones:["Color: Sugar Pop Brown","Marca: Bio-Essence","Efecto ampliador","Natural en ojos oscuros"], img:"lente-sugar-pop-brown.jpeg", nuevo:true, oferta:false },
+    { id:3, nombre:"Lente Light Blue", categoria:"lentes", precio:35000, descripcion:"Lente azul claro con diseño limbal ring. Color vibrante y llamativo, perfecto para looks atrevidos y creativos.", especificaciones:["Color: DY-JY105 Light Blue","Limbal ring definido","Alta cobertura","Impacto visual"], img:"lente-light-blue.jpeg", nuevo:true, oferta:true },
+    { id:4, nombre:"Lente Gomitas", categoria:"lentes", precio:35000, descripcion:"Lente gris con efecto gradiente y limbal ring oscuro pronunciado. Diámetro 14.2mm. Marca Duoxi. Look dolly y misterioso.", especificaciones:["Color: Gomitas","DIA: 14.2mm","Marca: Duoxi","Efecto gradiente gris","Limbal ring oscuro"], img:"lente-gomitas.jpeg", nuevo:true, oferta:false }
   ];
  
   // ── ESTADO ──
@@ -400,10 +400,11 @@
   function normalizeImg(src) {
     if (!src || typeof src !== 'string') return 'https://placehold.co/400x300?text=Sin+imagen';
     const t = src.trim();
-    // URLs externas o base64 (compatibilidad hacia atrás)
+    // URLs externas o base64
     if (t.startsWith('http') || t.startsWith('data:image')) return t;
-    // Rutas locales relativas (ej: images/producto.jpg)
+    // Cualquier ruta relativa: con carpeta, con ./ o directamente en la raíz
     if (t.startsWith('images/') || t.startsWith('./') || t.startsWith('../')) return t;
+    if (/\.(jpe?g|png|webp|gif)$/i.test(t)) return t;
     return 'https://placehold.co/400x300?text=Imagen+no+valida';
   }
  
