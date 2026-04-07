@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Glambrat | Lentes de Contacto y Belleza en Colombia</title>
-  <meta name="description" content="Glambrat co - La mejor tienda de lentes de contacto y accesorios de belleza. Encuentra tu estilo con Glambrat.">
-  <meta name="keywords" content="Glambrat, Glambrat co, lentes de contacto Colombia, accesorios de belleza, brayan felipe glambrat">
+  <title>Glambrat | Accesorios de Belleza en Colombia</title>
+  <meta name="description" content="Glambrat co - La mejor tienda de accesorios de belleza. Encuentra tu estilo con Glambrat.">
+  <meta name="keywords" content="Glambrat, Glambrat co, accesorios de belleza, brayan felipe glambrat">
   <meta name="author" content="Brayan Felipe">
   <meta property="og:title" content="Glambrat co">
-  <meta property="og:description" content="Tienda virtual de belleza y lentes de contacto.">
+  <meta property="og:description" content="Tienda virtual de accesorios de belleza.">
   <meta property="og:url" content="https://brayanfelip28.github.io/glambrat/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlamBrat Co.</title>
+  <title>GlamBrat Co. | Accesorios</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{--pink:#e8389a;--pink-light:#f472c0;--purple:#7c3fc4;--purple-deep:#4e1a8a;--blue:#3e8fe8;--blue-bright:#5bb8ff;--yellow:#ffd84d;--white:#fff;}
@@ -66,7 +66,6 @@
     .qty-btn{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;font-size:1.2rem;font-weight:800;cursor:pointer;transition:background .15s;flex-shrink:0;font-family:'Fredoka One',cursive;}
     .qty-btn:hover{background:rgba(255,255,255,.3);}
     .qty-display{flex:1;text-align:center;font-family:'Fredoka One',cursive;font-size:.85rem;color:#fff;padding:0 4px;line-height:36px;white-space:nowrap;}
-    .card-price-dyn{font-family:'Fredoka One',cursive;font-size:1.05rem;color:var(--yellow);text-shadow:1px 2px 0 rgba(0,0,0,.2);margin-top:6px;}
     .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(20,5,45,.75);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px;}
     .modal-overlay.active{opacity:1;pointer-events:all;}
     .modal{background:linear-gradient(145deg,#3d1270,#5a1a9a);border:2px solid rgba(255,255,255,.3);border-radius:26px;overflow:hidden;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.4);animation:modalPop .35s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow-y:auto;position:relative;}
@@ -115,7 +114,6 @@
     <button class="close-btn" id="closeBtn">&#10005;</button>
   </div>
   <ul class="sidebar-nav">
-    <li><a href="#" data-tab="lentes"><span class="nav-icon">&#128065;</span> Lentes de Contacto</a></li>
     <li><a href="#" data-tab="accesorios"><span class="nav-icon">&#128142;</span> Accesorios</a></li>
     <div class="sidebar-divider"></div>
     <li><a href="#" id="cartBtn"><span class="nav-icon">&#128722;</span> Mi Carrito</a></li>
@@ -129,11 +127,11 @@
     <span class="h-brat">Brat</span>
   </div>
   <div class="sparkles-row">&#10022; &#128132; &#10022; &#128539; &#10022; &#128139; &#10022;</div>
-  <p class="hero-sub">Lentes de contacto, pestañas y accesorios beauty &#10024; Envios a toda Colombia &#127464;&#127476;</p>
+  <p class="hero-sub">Accesorios beauty para realzar tu mirada &#10024; Envios a toda Colombia &#127464;&#127476;</p>
 </section>
 
 <div class="section-head">
-  <h2 id="sectionTitle">Elige tu favorito! &#10022;</h2>
+  <h2 id="sectionTitle">Nuestros Accesorios &#10022;</h2>
   <span class="section-count" id="sectionCount"></span>
 </div>
 <div class="grid-wrap">
@@ -177,24 +175,11 @@
 <footer>Hecho con amor por <strong>GlamBrat Co.</strong> &middot; Bogota, Colombia &middot; 2025 &#10022;</footer>
 
 <script>
-  // ----- BASE DE DATOS DE PRODUCTOS ACTUALIZADA (SIN PESTAÑAS) -----
-  // Lentes: precio 35.000 COP c/u
-  // Accesorios: precios originales
-
+  // ----- BASE DE DATOS DE PRODUCTOS (SOLO ACCESORIOS) -----
   const PRODUCTOS = [
-    // Lentes de Contacto (7 productos, precio 35000)
-    { id: 1, nombre: "Honey", categoria: "lentes", precio: 35000, descripcion: "Lentes de contacto color miel, ideal para un look natural y brillante.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/QF5J6cP.jpg" },
-    { id: 2, nombre: "Sugar Pop Brown", categoria: "lentes", precio: 35000, descripcion: "Lentes color café azucarado, perfectos para un look dulce y profundo.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/XZ7k2Lr.jpg" },
-    { id: 3, nombre: "Light Blue", categoria: "lentes", precio: 35000, descripcion: "Lentes azul claro, aportan un toque de frescura y misterio.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 50%", "Duración: 6 meses"], img: "https://i.imgur.com/1jK8QvW.jpg" },
-    { id: 4, nombre: "Sweet Secret Blue", categoria: "lentes", precio: 35000, descripcion: "Azul profundo con un secreto brillante, ideal para looks de impacto.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 60%", "Duración: 1 año"], img: "https://i.imgur.com/3VnLp2x.jpg" },
-    { id: 5, nombre: "Russia Blue", categoria: "lentes", precio: 35000, descripcion: "El clásico azul ruso, un color intenso y elegante.", especificaciones: ["Diámetro: 14.0mm", "Hidratación: 55%", "Duración: 1 año"], img: "https://i.imgur.com/fQvM5xN.jpg" },
-    { id: 6, nombre: "Margaret Gray", categoria: "lentes", precio: 35000, descripcion: "Gris humo, sutil y sofisticado para el día a día.", especificaciones: ["Diámetro: 14.2mm", "Hidratación: 52%", "Duración: 1 año"], img: "https://i.imgur.com/7yHpG4d.jpg" },
-    { id: 7, nombre: "Choco Gray", categoria: "lentes", precio: 35000, descripcion: "Mezcla de gris y chocolate, un color único y versátil.", especificaciones: ["Diámetro: 14.5mm", "Hidratación: 58%", "Duración: 1 año"], img: "https://i.imgur.com/WkQjN3L.jpg" },
-    
-    // Accesorios (sin cambios)
-    { id: 8, nombre: "Aplicador de Pestañas", categoria: "accesorios", precio: 8000, descripcion: "Aplicador de metal para una colocación precisa y fácil.", especificaciones: ["Material: Acero Inoxidable", "Antideslizante"], img: "https://i.imgur.com/6dF5gH8.jpg" },
-    { id: 9, nombre: "Pegamento para Pestañas", categoria: "accesorios", precio: 12000, descripcion: "Pegamento de larga duración, seguro para tus ojos.", especificaciones: ["Secado rápido", "Hipoalergénico", "Invisible"], img: "https://i.imgur.com/4VcH9kD.jpg" },
-    { id: 10, nombre: "Estuche para Lentes", categoria: "accesorios", precio: 15000, descripcion: "Estuche rígido para mantener tus lentes de contacto seguros.", especificaciones: ["Colores: Rosa, Morado, Azul", "Incluye líquido de muestra"], img: "https://i.imgur.com/1rE6w2L.jpg" }
+    { id: 1, nombre: "Aplicador de Pestañas", categoria: "accesorios", precio: 8000, descripcion: "Aplicador de metal para una colocación precisa y fácil.", especificaciones: ["Material: Acero Inoxidable", "Antideslizante"], img: "https://i.imgur.com/6dF5gH8.jpg" },
+    { id: 2, nombre: "Pegamento para Pestañas", categoria: "accesorios", precio: 12000, descripcion: "Pegamento de larga duración, seguro para tus ojos.", especificaciones: ["Secado rápido", "Hipoalergénico", "Invisible"], img: "https://i.imgur.com/4VcH9kD.jpg" },
+    { id: 3, nombre: "Estuche para Lentes", categoria: "accesorios", precio: 15000, descripcion: "Estuche rígido para mantener tus lentes de contacto seguros.", especificaciones: ["Colores: Rosa, Morado, Azul", "Incluye líquido de muestra"], img: "https://i.imgur.com/1rE6w2L.jpg" }
   ];
 
   // ----- FUNCIÓN PARA NORMALIZAR IMÁGENES (base64 o URL) -----
@@ -204,7 +189,6 @@
     if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('data:image')) {
       return trimmed;
     }
-    // Si parece base64 sin prefijo
     if (/^[A-Za-z0-9+/=]+$/.test(trimmed)) {
       return `data:image/jpeg;base64,${trimmed}`;
     }
@@ -212,7 +196,7 @@
   }
 
   // Variables globales
-  let currentCategory = "lentes";
+  let currentCategory = "accesorios"; // Solo existe accesorios
   let cart = [];
 
   // ----- FUNCIONES DEL CARRITO -----
@@ -308,19 +292,13 @@
     }
   }
 
-  // ----- RENDERIZADO DE PRODUCTOS -----
+  // ----- RENDERIZADO DE PRODUCTOS (solo accesorios) -----
   function renderProducts() {
     const grid = document.getElementById('productGrid');
     const sectionTitle = document.getElementById('sectionTitle');
     const sectionCount = document.getElementById('sectionCount');
     
-    let titulo = "";
-    switch(currentCategory) {
-      case "lentes": titulo = "Lentes de Contacto"; break;
-      case "accesorios": titulo = "Accesorios"; break;
-      default: titulo = "Productos";
-    }
-    sectionTitle.innerText = titulo + " ✨";
+    sectionTitle.innerText = "Accesorios ✨";
     
     const filteredProducts = PRODUCTOS.filter(p => p.categoria === currentCategory);
     sectionCount.innerText = filteredProducts.length + " productos";
@@ -338,7 +316,7 @@
         <div class="card" data-id="${product.id}">
           <img class="card-img" src="${imgSrc}" alt="${product.nombre}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text=Error+de+imagen';">
           <div class="card-body">
-            <div class="card-tag">${product.categoria === 'lentes' ? 'LENTES' : 'ACCESORIO'}</div>
+            <div class="card-tag">ACCESORIO</div>
             <h3>${product.nombre}</h3>
             <p>${product.descripcion.substring(0, 60)}...</p>
             <div class="price">$${product.precio.toLocaleString()} COP</div>
@@ -371,7 +349,7 @@
     modalImg.src = normalizedSrc;
     modalImg.onerror = function() { this.onerror=null; this.src='https://placehold.co/400x300?text=Error+de+imagen'; };
     
-    document.getElementById('modalTag').innerText = product.categoria === 'lentes' ? 'LENTES DE CONTACTO' : 'ACCESORIO';
+    document.getElementById('modalTag').innerText = 'ACCESORIO';
     document.getElementById('modalTitle').innerText = product.nombre;
     document.getElementById('modalDesc').innerText = product.descripcion;
     
@@ -423,6 +401,7 @@
     document.getElementById('closeBtn').addEventListener('click', closeSidebar);
     document.getElementById('overlay').addEventListener('click', closeSidebar);
     
+    // Solo hay una categoría, pero mantenemos el listener por si se agregaran más
     document.querySelectorAll('[data-tab]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
