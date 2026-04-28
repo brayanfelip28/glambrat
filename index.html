@@ -193,7 +193,6 @@
 </head>
 <body>
  
-<!-- ── HEADER ── -->
 <header>
   <div class="header-top">
     <div class="logo">
@@ -219,7 +218,6 @@
   </div>
 </header>
  
-<!-- ── SIDEBAR OVERLAY ── -->
 <div class="sidebar-overlay" id="overlay"></div>
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
@@ -249,7 +247,6 @@
   </div>
 </aside>
  
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-badge">&#128156; Nueva Colección 2025 &#128156;</div>
@@ -261,7 +258,7 @@
     <p class="hero-sub">Accesorios beauty para realzar tu mirada &#10024; Envíos a toda Colombia &#127464;&#127476;</p>
     <div class="hero-stats">
       <div class="stat"><span class="stat-num">+200</span><span class="stat-label">Clientas felices</span></div>
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Productos</span></div>
+      <div class="stat"><span class="stat-num">10</span><span class="stat-label">Modelos</span></div>
       <div class="stat"><span class="stat-num">24h</span><span class="stat-label">Respuesta WA</span></div>
     </div>
   </div>
@@ -281,7 +278,6 @@
   </div>
 </section>
  
-<!-- ── SECTION HEAD (filtro activo) ── -->
 <div class="section-head" id="singleSectionHead" style="display:none">
   <h2 class="section-title" id="sectionTitle">Todos los Productos ✨</h2>
   <div class="section-controls">
@@ -295,12 +291,10 @@
   </div>
 </div>
  
-<!-- ── PRODUCT GRID (filtro activo) ── -->
 <div class="grid-wrap" id="singleGridWrap" style="display:none">
   <div class="grid" id="productGrid"></div>
 </div>
  
-<!-- ── SECCIÓN LENTES DE CONTACTO ── -->
 <div id="secLentes">
   <div class="section-head">
     <h2 class="section-title">&#128065; Lentes de Contacto</h2>
@@ -313,7 +307,6 @@
   </div>
 </div>
  
-<!-- ── SECCIÓN ACCESORIOS ── -->
 <div id="secAccesorios">
   <div class="section-head">
     <h2 class="section-title">&#128142; Accesorios</h2>
@@ -326,7 +319,6 @@
   </div>
 </div>
  
-<!-- ── MODAL PRODUCTO ── -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">&#10005;</button>
@@ -344,7 +336,6 @@
   </div>
 </div>
  
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -383,7 +374,7 @@
 </footer>
  
 <script>
-  // ── BASE DE DATOS ──
+  // ── BASE DE DATOS (Actualizada con Sugar Pop Brown) ──
   const PRODUCTOS = [
     { id:2, nombre:"Hybrid Kitten Green", categoria:"lentes", precio:35000, descripcion:"Lente de contacto verde con matices amarillos, efecto natural y vibrante. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Hybrid Kitten Green","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-hybrid-kitten-green.jpeg", nuevo:false, oferta:false },
     { id:3, nombre:"Millennial Spice", categoria:"lentes", precio:35000, descripcion:"Lente de contacto gris con efecto moderno y elegante. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Millennial Spice","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-millennial-spice.jpeg", nuevo:false, oferta:false },
@@ -394,8 +385,7 @@
     { id:8, nombre:"Verde Limón", categoria:"lentes", precio:35000, descripcion:"Lente de contacto verde limón con aro oscuro, efecto fresco y juvenil. Diámetro 14.0mm, agua 38%, uso anual.", especificaciones:["Color: Verde Limón","DIA: 14.0mm","B.C: 8.5mm","Agua: 38%","Duración: Anual"], img:"lente-verde-limon.jpeg", nuevo:false, oferta:false },
     { id:9, nombre:"Nicosia Blue", categoria:"lentes", precio:35000, descripcion:"Lente de contacto azul vibrante con degradado natural. Diámetro 14.2mm, agua 38%, uso anual.", especificaciones:["Color: Nicosia Blue","DIA: 14.2mm","B.C: 8.5mm","Agua: 38%","Duración: Anual"], img:"lente-nicosia-blue.jpeg", nuevo:false, oferta:false },
     { id:10, nombre:"Sweet Secret Blue", categoria:"lentes", precio:35000, descripcion:"Lente de contacto azul-gris con detalles amarillos, efecto natural y sofisticado. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Sweet Secret Blue","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-sweet-secret-blue.jpeg", nuevo:false, oferta:false },
-    { id:11, nombre:"Margaret Gray", categoria:"lentes", precio:35000, descripcion:"Lente de contacto gris con patrón detallado, efecto elegante y versátil. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Margaret Gray","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-margaret-gray.jpeg", nuevo:false, oferta:false },
-    { id:12, nombre:"Sugar Pop Brown", categoria:"lentes", precio:35000, descripcion:"Lente de contacto marrón con matices cálidos, efecto juvenil y natural. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Sugar Pop Brown","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-sugar-pop-brown.jpeg", nuevo:false, oferta:false },
+    { id:12, nombre:"Sugar Pop Brown", categoria:"lentes", precio:35000, descripcion:"Lente de contacto marrón con efecto pop y natural. Diámetro 14.2mm, uso anual.", especificaciones:["Color: Sugar Pop Brown","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-sugar-pop-brown.jpeg", nuevo:false, oferta:false },
     { id:13, nombre:"DY-JY105 Light Blue", categoria:"lentes", precio:35000, descripcion:"Lente de contacto azul claro con aro oscuro, efecto fresco y llamativo. Diámetro 14.2mm, uso anual.", especificaciones:["Color: DY-JY105 Light Blue","DIA: 14.2mm","B.C: 8.5mm","Agua: 40%","Duración: Anual"], img:"lente-dy-jy105-light-blue.jpeg", nuevo:false, oferta:false }
   ];
  
@@ -408,9 +398,7 @@
   function normalizeImg(src) {
     if (!src || typeof src !== 'string') return 'https://placehold.co/400x300?text=Sin+imagen';
     const t = src.trim();
-    // URLs externas o base64
     if (t.startsWith('http') || t.startsWith('data:image')) return t;
-    // Cualquier ruta relativa: con carpeta, con ./ o directamente en la raíz
     if (t.startsWith('images/') || t.startsWith('./') || t.startsWith('../')) return t;
     if (/\.(jpe?g|png|webp|gif)$/i.test(t)) return t;
     return 'https://placehold.co/400x300?text=Imagen+no+valida';
